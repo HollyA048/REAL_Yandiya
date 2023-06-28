@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "Yandiya_Base",
-    "slug": "Yandiya_Base",
+    "name": "template",
+    "slug": "template",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
