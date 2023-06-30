@@ -22,49 +22,57 @@ export function InfoScreen({ navigation: { navigate } }) {
   const [City, setCity] = useState('');
   const [PhoneNumber, setPhoneNumber] = useState('');
   const [contactPerson, setContactPerson] = useState('');
-  const [installer, setinstaller] = useState('');
+  const [installer, setInstaller] = useState('');
   const [isButtonDisabled, setIsButtonDisabled] = useState(true);
-
 
   const handleLocationChange = (text) => {
     setLocation(text);
     checkInputsFilled();
   };
+
   const handleAddressChange = (text) => {
     setAddress(text);
     checkInputsFilled();
   };
+
   const handleCityChange = (text) => {
     setCity(text);
     checkInputsFilled();
   };
+
   const handlePostCodeChange = (text) => {
     setPostCode(text);
     checkInputsFilled();
   };
+
   const handlePhoneNumberChange = (text) => {
     setPhoneNumber(text);
     checkInputsFilled();
   };
+
   const handleEmailChange = (text) => {
+    // Check if the text contains "@"
+    const hasAtSymbol = text.includes("@");
+
+    // Update the state variable
     setEmail(text);
     checkInputsFilled();
+
+    // Check if the email is valid and update the button disabled state
+    if (hasAtSymbol && Location && PostCode && Address && City && PhoneNumber && contactPerson) {
+      setIsButtonDisabled(false);
+    } else {
+      setIsButtonDisabled(true);
+    }
   };
+
   const handleContactChange = (text) => {
     setContactPerson(text);
     checkInputsFilled();
   };
 
   const checkInputsFilled = () => {
-    if (
-      Location &&
-      PostCode &&
-      Address &&
-      City &&
-      Email &&
-      PhoneNumber &&
-      contactPerson
-    ) {
+    if (Location && PostCode && Address && City && Email && PhoneNumber && contactPerson) {
       setIsButtonDisabled(false);
     } else {
       setIsButtonDisabled(true);
@@ -74,27 +82,26 @@ export function InfoScreen({ navigation: { navigate } }) {
   return (
     <View style={{ height: '100%' }}>
       <View style={{ backgroundColor: '#f8f7f7', flex: 1 }}>
-              {/* Top red section */}
-      <View
-        style={{
-          height: '30%',
-          backgroundColor: '#e42c22',
-          borderBottomRightRadius: 100,
-        }}
-      />
-      {/* Logo image */}
-      <ImageBackground source={image} style={styles.initalScreenImage} />
-      {/* Side corner image */}
-      <ImageBackground source={side} style={{ height: 100, width: 100 }} />
-      {/* Bottom white section */}
-      <View
-        style={{
-          height: '10%',
-          backgroundColor: '#f8f7f7',
-          borderTopLeftRadius: 100,
-        }}
-      ></View>
-        
+        {/* Top red section */}
+        <View
+          style={{
+            height: '30%',
+            backgroundColor: '#e42c22',
+            borderBottomRightRadius: 100,
+          }}
+        />
+        {/* Logo image */}
+        <ImageBackground source={image} style={styles.initalScreenImage} />
+        {/* Side corner image */}
+        <ImageBackground source={side} style={{ height: 100, width: 100 }} />
+        {/* Bottom white section */}
+        <View
+          style={{
+            height: '10%',
+            backgroundColor: '#f8f7f7',
+            borderTopLeftRadius: 100,
+          }}
+        ></View>
 
         {/* Container for text inputs */}
         <View
@@ -135,7 +142,6 @@ export function InfoScreen({ navigation: { navigate } }) {
                 onChangeText={handleLocationChange}
               />
 
-              
               {/* Client Address */}
               <Text>{'\n'}Client Adress:{'\n'}</Text>
               <TextInput
@@ -181,7 +187,7 @@ export function InfoScreen({ navigation: { navigate } }) {
                 onChangeText={handleEmailChange}
               />
 
-              {/* Client Installer contact */}
+              {/* Client Contact */}
               <Text>{'\n'}Client Contact:{'\n'}</Text>
               <TextInput
                 placeholder="Contact"
@@ -196,7 +202,7 @@ export function InfoScreen({ navigation: { navigate } }) {
                 placeholder="Installer"
                 style={{ padding: 8, backgroundColor: '#f5f5f5' }}
                 value={installer}
-                onChangeText={setinstaller}
+                onChangeText={setInstaller}
               />
 
               {/* Other input fields */}
