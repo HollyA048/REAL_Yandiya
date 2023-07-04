@@ -1,173 +1,113 @@
-import { useState } from 'react';
-import {
-  StyleSheet,
-  Text,
-  View,
-  Button,
-  TextInput,
-  FlatList,
-  ScrollView,
-} from 'react-native';
 
-import TopHeader from './components/Header';
-import Check from './components/ComCheckBox';
-import CustomCom from './components/ExpoSucks';
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
 
-export default function App() {
-  const [enteredGoalText, setEnteredGoalText] = useState('');
-  const [courseGoals, setCourseGoals] = useState([]);
+//screens
+import { welcomeScreen } from './screens/welcomeScreen.js';
+import { loginScreen } from './screens/logInScreen';
+import { SignUpScreen } from './screens/signUpScreen';
+import { homeScreen } from './screens/homeScreen';
+import { logOut } from './screens/logoutScreen';
+import { projectHub } from './screens/projectHub';
+import { addCommission } from './screens/addCommissionScreen';
+import { clients } from './screens/clientsScreen';
+import { settings } from './screens/settingsScreen';
+import { infoScreen } from './screens/infoScreen';
+import { mainMenuCom } from './screens/homeCommissionScreen';
+import { preSiteVisitSurvey } from './screens/visitScreen';
+import { preCom } from './screens/preComScreen';
+import { inspectionScreen } from './screens/inspectionScreen';
+import { sendOffForm } from './screens/sendOffScreen';
 
-  const [isButtonDisabled, setIsButtonDisabled] = useState(true);
 
-  function goalInputHandler(enteredText) {
-    setEnteredGoalText(enteredText);
-    setIsButtonDisabled(enteredText === '');
-  }
+const Stack = createStackNavigator();
 
-  function addGoalHandler() {
-    setCourseGoals((currentCourseGoals) => [
-      ...currentCourseGoals,
-      { text: enteredGoalText, id: Math.random().toString() },
-    ]);
-  }
+//   <Checkbox style={styles.checkbox} value={checked} onValueChange={setChecked} />
 
+export const Change = () => {
   return (
-    <View style={styles.appContainer}>
-      <TopHeader />
-      <ScrollView>
-        <View style={styles.inputContainer}>
-          <TextInput
-            style={styles.textInput}
-            placeholder="Custom requirement here:"
-            onChangeText={goalInputHandler}
-          />
-          <Button 
-            title="Add" 
-            onPress={addGoalHandler}
-            disabled={isButtonDisabled} />
-        </View>
-        <View style={styles.boxContainer}>
-          <View style={styles.checkboxContainer}>
-            <Check />
-          </View>
-          <View style={styles.checkBoxDescContainer}>
-            <Text>All double pole switches connected to relay box</Text>
-          </View>
-        </View>
-        <View style={styles.boxContainer}>
-          <View style={styles.checkboxContainer}>
-            <Check />
-          </View>
-          <View style={styles.checkBoxDescContainer}>
-            <Text style={{ bottom: '10%' }}>
-              All relay boxes numbered or labelled corresponding to room number
-            </Text>
-          </View>
-        </View>
-        <View style={styles.boxContainer}>
-          <View style={styles.checkboxContainer}>
-            <Check />
-          </View>
-          <View style={styles.checkBoxDescContainer}>
-            <Text style={{ bottom: '10%' }}>
-              All electrical power to each spur live in the off position
-            </Text>
-          </View>
-        </View>
-        <View style={styles.boxContainer}>
-          <View style={styles.checkboxContainer}>
-            <Check />
-          </View>
-          <View style={styles.checkBoxDescContainer}>
-            <Text style={{ bottom: '10%' }}>
-              All panels fitted and located in their correct positions
-            </Text>
-          </View>
-        </View>
-        <View style={styles.boxContainer}>
-          <View style={styles.checkboxContainer}>
-            <Check />
-          </View>
-          <View style={styles.checkBoxDescContainer}>
-            <Text style={{ bottom: '10%' }}>
-              All thermostats mounted in a central position within each area
-            </Text>
-          </View>
-        </View>
-        <View style={styles.boxContainer}>
-          <View style={styles.checkboxContainer}>
-            <Check />
-          </View>
-          <View style={styles.checkBoxDescContainer}>
-            <Text>Keep batteries uninstalled</Text>
-          </View>
-        </View>
+    <NavigationContainer>
+      <Stack.Navigator
+          initialRouteName="Login"
+        screenOptions={{ gestureEnabled: false }}>
+        <Stack.Screen
+          name="Welcome"
+          component={welcomeScreen}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="Login"
+          component={loginScreen}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="Sign up"
+          component={SignUpScreen}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="Home"
+          component={homeScreen}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="Log Out"
+          component={logOut}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="Project Hub"
+          component={projectHub}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="Add Commission"
+          component={addCommission}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="Clients"
+          component={clients}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="Settings"
+          component={settings}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="Information"
+          component={infoScreen}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="Commission Screen"
+          component={mainMenuCom}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="Pre-Site Survey"
+          component={preSiteVisitSurvey}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="Commission Checklist"
+          component={preCom}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="Inspection"
+          component={inspectionScreen}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="Send Off Form"
+          component={sendOffForm}
+          options={{ headerShown: false }}
+        />
         
-        <View style={styles.customTitle}>
-          <Text
-            style={{ textAlign: 'center', fontWeight: 'bold', fontSize: 20 }}>
-            Custom Requirements
-          </Text>
-        </View>
-        <FlatList
-          data={courseGoals}
-          renderItem={(itemData) => {
-            return <CustomCom text={itemData.item.text} />;
-          }}
-          alwaysBounceVertical={false}></FlatList>
-          <View style={styles.proceedButton}>
-            <Button title="Proceed"/>
-          </View>
-      </ScrollView>
-    </View>
+      </Stack.Navigator>
+    </NavigationContainer>
   );
-}
-
-const styles = StyleSheet.create({
-  appContainer: {
-    flex: 1,
-  },
-  textInput: {
-    borderWidth: 1,
-    borderColor: '#cccccc',
-    width: '70%',
-    left: '30%',
-    marginRight: 8,
-    padding: 8,
-  },
-  customTitle: {
-    borderWidth: 1,
-    borderColor: '#cccccc',
-    padding: 8,
-  },
-  checkboxContainer: {
-    left: '5%',
-    bottom: '2%',
-    borderWidth: 1,
-    borderColor: 'grey',
-    borderRadius: 10,
-  },
-  boxContainer: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    marginBottom: 24,
-    borderBottomWidth: 1,
-    borderBotomColor: '#cccccc',
-  },
-  checkBoxDescContainer: {
-    right: '30%',
-    width: '80%',
-  },
-  inputContainer: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    left: '0.1%',
-    marginBottom: 40,
-  },
-  proceedButton:{
-    width: '25%',
-    alignSelf: 'center',
-    marginTop: '10%',
-  }
-});
+};
+export default Change;
