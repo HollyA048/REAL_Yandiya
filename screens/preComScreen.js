@@ -9,11 +9,11 @@ import {
   ScrollView,
 } from 'react-native';
 
-import TopHeader from './components/Header';
-import Check from './components/ComCheckBox';
-import CustomCom from './components/ExpoSucks';
+import TopHeader from '../components/Header';
+import Check from '../components/ComCheckBox';
+import CustomCom from '../components/ExpoSucks';
 
-export default function preCom({ navigation: { navigate } }) {
+export function preCom({ navigation: { navigate } }) {
   const [enteredGoalText, setEnteredGoalText] = useState('');
   const [courseGoals, setCourseGoals] = useState([]);
 
