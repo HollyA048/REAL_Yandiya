@@ -5,7 +5,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 //screens
 import { welcomeScreen } from './screens/welcomeScreen.js';
 import { loginScreen } from './screens/logInScreen';
-import { signUpScreen } from './screens/signUpScreen';
+import { SignUpScreen } from './screens/signUpScreen';
 import { homeScreen } from './screens/homeScreen';
 import { logOut } from './screens/logoutScreen';
 import { projectHub } from './screens/projectHub';
@@ -28,6 +28,7 @@ export const Change = () => {
   return (
     <NavigationContainer>
       <Stack.Navigator
+          initialRouteName="Login"
         screenOptions={{ gestureEnabled: false }}>
         <Stack.Screen
           name="Welcome"
@@ -41,7 +42,7 @@ export const Change = () => {
         />
         <Stack.Screen
           name="Sign up"
-          component={signUpScreen}
+          component={SignUpScreen}
           options={{ headerShown: false }}
         />
         <Stack.Screen
