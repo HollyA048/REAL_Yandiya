@@ -9,20 +9,15 @@ import {
   TouchableOpacity,
   Linking,
 } from 'react-native';
-import { createStackNavigator } from '@react-navigation/stack';
-import {useNavigation} from "@react-navigation/native";
 
-import facebook from '../assets/facebook.png';
-import google from '../assets/google.png';
-import linkedin from '../assets/linkedin.png';
+import facebook from '../assets/facebook.jpeg';
+import google from '../assets/google.jpeg';
+import linkedin from '../assets/linkedin.jpeg';
 import { ScrollView } from 'react-native-gesture-handler';
-const Stack = createStackNavigator();
 
 const icon = { uri: 'https://i.imgur.com/5QVr3RA.png' };
 
-export function loginScreen({navigation: { navigate }}) {
-
-  const navigation = useNavigation();
+export function LoginScreen({navigation: {navigate}}) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [status, setStatus] = useState('')
@@ -82,7 +77,7 @@ export function loginScreen({navigation: { navigate }}) {
                 }
               }
               else {
-                navigation.navigate("Home");
+                navigate("Home");
               }
           })
           .catch(error => {
@@ -90,8 +85,9 @@ export function loginScreen({navigation: { navigate }}) {
           });
     };
 
-    return (
-    <View style={{ flex: 1, backgroundColor: '#f8f7f7' }}>
+
+  return (
+<View style={{ flex: 1, backgroundColor: '#f8f7f7' }}>
       {/* Header */}
       <View
         style={{
@@ -230,7 +226,7 @@ export function loginScreen({navigation: { navigate }}) {
           position: 'absolute',
         }}>
         <TouchableOpacity
-          onPress={() => navigation.navigate('Sign up')}
+          onPress={() => navigate('Sign Up')}
           style={{
             height: 30,
             width: 140,
@@ -247,7 +243,6 @@ export function loginScreen({navigation: { navigate }}) {
     </View>
   );
 }
-
 const styles = StyleSheet.create({
   outImage: {
     width: 190,
