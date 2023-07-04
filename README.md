@@ -1,11 +1,20 @@
-# Sample Snack app
 
-Open the `App.js` file to start writing some code. You can preview the changes directly on your phone or tablet by scanning the **QR code** or use the iOS or Android emulators. When you're done, click **Save** and share the link!
+# Yandiya App
 
-When you're ready to see everything that Expo provides (or if you want to use your own editor) you can **Download** your project and use it with [expo-cli](https://docs.expo.dev/get-started/installation/#expo-cli)).
+The new and updated app for Yandiya
 
-All projects created in Snack are publicly available, so you can easily share the link to this project via link, or embed it on a web page with the `<>` button.
 
-If you're having problems, you can tweet to us [@expo](https://twitter.com/expo) or ask in our [forums](https://forums.expo.dev/c/expo-dev-tools/61) or [Discord](https://chat.expo.dev/).
+# IMPORTANT
 
-Snack is Open Source. You can find the code on the [GitHub repo](https://github.com/expo/snack).
+Please please please please please please create a NEW BRANCH with the name of the screen you have worked on. When you commit DO NOT COMMIT TO MAIN!!!!!!!!!!!!!!!!!!! Commit to your own branch so you dont mess everything up, ok? Cool
+
+
+## Features
+
+- Login
+- Sign Up
+- Burger Navigator
+- Home
+- Commissioning Checklist
+- Inspection Checklist
+
