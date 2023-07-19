@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { View, Text, TouchableOpacity, SafeAreaView } from 'react-native';
 import Swiper from 'react-native-swiper';
-import Header from '../components/Header'
+import Header from '../components/Header';
 
 export function ProjectHub(){
   return (
