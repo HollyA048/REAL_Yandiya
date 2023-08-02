@@ -4,7 +4,7 @@ import {
   Text
 } from 'react-native';
 
-export function settings({ navigation: { navigate } }) {
+export function SettingsScreen({ navigation: { navigate } }) {
     return (
         <View>
             <Text>Add Commission</Text>

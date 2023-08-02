@@ -10,9 +10,9 @@ import {
   Linking,
 } from 'react-native';
 
-import facebook from '../assets/facebook.jpeg';
-import google from '../assets/google.jpeg';
-import linkedin from '../assets/linkedin.jpeg';
+import facebook from '../assets/facebook.png';
+import google from '../assets/google.png';
+import linkedin from '../assets/linkedin.png';
 import { ScrollView } from 'react-native-gesture-handler';
 
 const icon = { uri: 'https://i.imgur.com/5QVr3RA.png' };
@@ -56,8 +56,6 @@ export function LoginScreen({navigation: {navigate}}) {
   };
 
   const authenticateWithServer = () => {
-     navigate("Home");
-    return; // bypassing the authenitcation check
       const formData = new FormData();
       formData.append('email', email);
       fetch(`http://188.39.66.240:9080/authenticate.php`, {

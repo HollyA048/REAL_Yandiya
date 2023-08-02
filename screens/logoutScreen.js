@@ -4,7 +4,7 @@ import {
   Text
 } from 'react-native';
 
-export function logOut({ navigation: { navigate } }) {
+export function LogOut({ navigation: { navigate } }) {
     return (
         <View>
             <Text>Add Commission</Text>
