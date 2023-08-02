@@ -13,9 +13,9 @@ import {
 const icon = { uri: 'https://i.imgur.com/5QVr3RA.png' };
 
 // Importing images
-import facebook from '../assets/facebook.jpeg';
-import google from '../assets/google.jpeg';
-import linkedin from '../assets/linkedin.jpeg';
+import facebook from '../assets/facebook.png';
+import google from '../assets/google.png';
+import linkedin from '../assets/linkedin.png';
 import {useNavigation} from "@react-navigation/native";
 import {ScrollView} from "react-native-gesture-handler";
 

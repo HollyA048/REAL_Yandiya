@@ -3,21 +3,15 @@ import { Text, View, Image } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createStackNavigator } from '@react-navigation/stack';
-import { HomeScreen } from './screen/HomeScreen';
-import { FirstScreen } from './screen/firstScreen';
-import { FormScreen } from './screen/formScreen';
-import { HelpScreen } from './screen/helpScreen';
-import { InfoScreen} from './screen/infoScreen';
-import { inspectionScreen } from './screen/inspectionScreen';
-import { SettingsScreen } from './screen/Settings';
-import { installInfo } from './screen/install';
-import { LoginScreen } from './screen/logInScreen';
-import { LogOut } from './screen/logoutScreen';
-import { preCommission } from './screen/preCom';
-import { ProductInfo } from './screen/productInfo';
-import { ProjectHub } from './screen/projectHub';
-import { SettingsInfo } from './screen/settingsInfo';
-import { SignUpScreen } from './screen/signUpScreen';
+import { homeScreen } from './screens/homeScreen';
+import { InfoScreen} from './screens/infoScreen';
+import { inspectionScreen } from './screens/inspectionScreen';
+import { LoginScreen } from './screens/logInScreen';
+import { LogOut } from './screens/logoutScreen';
+import { preCommission } from './screens/preComScreen';
+import { ProjectHub } from './screens/projectHub';
+import { SignUpScreen } from './screens/signUpScreen';
+import { SettingsScreen } from './screens/settingsScreen';
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -28,7 +22,7 @@ function HomeStack() {
     <Stack.Navigator initialRouteName='First'>
       <Stack.Screen
         name="First"
-        component={FirstScreen}
+        component={LoginScreen}
         options={({ navigation }) => ({
           headerShown: false,
           tabBarStyle: { display: 'none' },
@@ -55,7 +49,7 @@ function App() {
         }}>
         <Tab.Screen
           name="Initial"
-          component={FirstScreen}
+          component={LoginScreen}
           options={{
             tabBarButton: () => null,
             headerShown: false,
@@ -70,7 +64,7 @@ function App() {
             tabBarIcon: ({ focused }) => (
               <View style={{ alignItems: 'center', justifyContent: 'center' }}>
                 <Image
-                  source={require('./assets/pdf-file.png')}
+                  source={require('./assets/icon.png')} // change to the correct icon
                   resizeMode="contain"
                   style={{
                     bottom: '40%',
@@ -106,13 +100,13 @@ function App() {
         />
         <Tab.Screen
           name="Home"
-          component={HomeScreen}
+          component={homeScreen}
           options={{
             headerShown: false,
             tabBarIcon: ({ focused }) => (
               <View>
                 <Image
-                  source={require('./assets/add.png')}
+                  source={require('./assets/icon.png')} // change to the correct icon
                   resizeMode="contain"
                   style={{
                     width: 50,
@@ -133,7 +127,7 @@ function App() {
             tabBarIcon: ({ focused }) => (
               <View style={{ alignItems: 'center', justifyContent: 'center' }}>
                 <Image
-                  source={require('./assets/Settings.png')}
+                  source={require('./assets/icon.png')} // change to the correct icon
                   resizeMode="contain"
                   style={{
                     bottom: '40%',
@@ -179,24 +173,6 @@ function App() {
         <Tab.Screen
           name="Sign Up"
           component={SignUpScreen}
-          options={{
-            tabBarButton: () => null,
-            headerShown: false,
-            tabBarStyle: { display: 'none' },
-          }}
-        />
-        <Tab.Screen
-          name="Help"
-          component={HelpScreen}
-          options={{
-            tabBarButton: () => null,
-            headerShown: false,
-            tabBarStyle: { display: 'none' },
-          }}
-        />
-        <Tab.Screen
-          name="SettingsInfo"
-          component={SettingsInfo}
           options={{
             tabBarButton: () => null,
             headerShown: false,
