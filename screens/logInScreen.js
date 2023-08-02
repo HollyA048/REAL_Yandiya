@@ -56,6 +56,8 @@ export function LoginScreen({navigation: {navigate}}) {
   };
 
   const authenticateWithServer = () => {
+     navigate("Home");
+    return; // bypassing the authenitcation check
       const formData = new FormData();
       formData.append('email', email);
       fetch(`http://188.39.66.240:9080/authenticate.php`, {
