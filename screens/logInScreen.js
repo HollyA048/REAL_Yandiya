@@ -56,8 +56,6 @@ export function LoginScreen({navigation: {navigate}}) {
   };
 
   const authenticateWithServer = () => {
-      navigate("Home"); // Override the server for testing purposes
-      return;
       const formData = new FormData();
       formData.append('email', email);
       fetch(`http://188.39.66.240:9080/authenticate.php`, {
