@@ -2,7 +2,6 @@ import React from 'react';
 import {Text, View, ScrollView, TouchableOpacity, Button} from 'react-native';
 import { createStackNavigator } from "@react-navigation/stack";
 import { useEffect, useState } from "react";
-import {useNavigation} from "@react-navigation/native";
 
 const Stack = createStackNavigator();
 
@@ -38,29 +37,6 @@ const getSession = async () => {
         return null;
     }
 };
-
-export function SignOutButton() {
-    const navigation = useNavigation();
-
-    const handleSignOut = () => {
-        fetch('http://188.39.66.240:9080/sign_out.php')
-            .then(response => {
-                if (response.status === 200) {
-                    navigation.navigate('First');
-                } else {
-                    // Handle other response codes or errors
-                    console.error('Sign-out request failed' + response.status);
-                }
-            })
-            .catch(error => {
-                console.error('Error occurred during sign-out:', error);
-            });
-    };
-
-    return (
-        <Button title="Sign Out" onPress={handleSignOut} />
-    );
-}
 
 export function homeScreen({ navigation: { navigate } }) {
     const [commissions, setCommissions] = useState([]);
@@ -124,7 +100,6 @@ export function homeScreen({ navigation: { navigate } }) {
                         )}
                     </ScrollView>
                 </View>
-                <View style={styles.footer}><SignOutButton/></View>
             </View>
         </View>
     );
