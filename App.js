@@ -12,6 +12,7 @@ import { preCommission } from './screens/preComScreen';
 import { projectHub } from './screens/projectHub';
 import { signUpScreen } from './screens/signUpScreen';
 import { settingsScreen } from './screens/settingsScreen';
+import { addCommissionScreen } from './screens/addCommissionScreen';
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -161,6 +162,15 @@ function App() {
             tabBarStyle: { display: 'none' },
           }}
         />
+          <Tab.Screen
+              name="addCommission"
+              component={addCommissionScreen}
+              options={{
+                  tabBarButton: () => null,
+                  headerShown: false,
+                  tabBarStyle: { display: 'none' },
+              }}
+          />
         <Tab.Screen
           name="Login"
           component={loginScreen}

@@ -74,7 +74,7 @@ export function homeScreen({ navigation: { navigate } }) {
 
                     <Text style={{ fontSize: 18 }}>New Commission</Text>
                     <View style={styles.separator} />
-                    <TouchableOpacity style={styles.whitespace} onPress={() => navigate('Commission')}>
+                    <TouchableOpacity style={styles.whitespace} onPress={() => navigate('addCommission')}>
                         <Text>+</Text>
                         <Text>Add New Commission</Text>
                     </TouchableOpacity>
