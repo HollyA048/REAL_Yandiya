@@ -4,14 +4,14 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createStackNavigator } from '@react-navigation/stack';
 import { homeScreen } from './screens/homeScreen';
-import { InfoScreen} from './screens/infoScreen';
+import { infoScreen } from './screens/infoScreen';
 import { inspectionScreen } from './screens/inspectionScreen';
-import { LoginScreen } from './screens/logInScreen';
-import { LogOut } from './screens/logoutScreen';
+import { loginScreen } from './screens/loginScreen';
+import { logOut } from './screens/logoutScreen';
 import { preCommission } from './screens/preComScreen';
-import { ProjectHub } from './screens/projectHub';
-import { SignUpScreen } from './screens/signUpScreen';
-import { SettingsScreen } from './screens/settingsScreen';
+import { projectHub } from './screens/projectHub';
+import { signUpScreen } from './screens/signUpScreen';
+import { settingsScreen } from './screens/settingsScreen';
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -22,7 +22,7 @@ function HomeStack() {
     <Stack.Navigator initialRouteName='First'>
       <Stack.Screen
         name="First"
-        component={LoginScreen}
+        component={loginScreen}
         options={({ navigation }) => ({
           headerShown: false,
           tabBarStyle: { display: 'none' },
@@ -49,7 +49,7 @@ function App() {
         }}>
         <Tab.Screen
           name="Initial"
-          component={LoginScreen}
+          component={loginScreen}
           options={{
             tabBarButton: () => null,
             headerShown: false,
@@ -58,7 +58,7 @@ function App() {
         />
         <Tab.Screen
           name="ProjectHub"
-          component={ProjectHub}
+          component={projectHub}
           options={{
             headerShown: false,
             tabBarIcon: ({ focused }) => (
@@ -121,7 +121,7 @@ function App() {
         />
         <Tab.Screen
           name="Settings"
-          component={SettingsScreen}
+          component={settingsScreen}
           options={{
             headerShown: false,
             tabBarIcon: ({ focused }) => (
@@ -154,7 +154,7 @@ function App() {
         />
         <Tab.Screen
           name="LogOut"
-          component={LogOut}
+          component={logOut}
           options={{
             tabBarButton: () => null,
             headerShown: false,
@@ -163,7 +163,7 @@ function App() {
         />
         <Tab.Screen
           name="Login"
-          component={LoginScreen}
+          component={loginScreen}
           options={{
             tabBarButton: () => null,
             headerShown: false,
@@ -172,7 +172,7 @@ function App() {
         />
         <Tab.Screen
           name="Sign Up"
-          component={SignUpScreen}
+          component={signUpScreen}
           options={{
             tabBarButton: () => null,
             headerShown: false,

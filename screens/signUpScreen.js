@@ -19,7 +19,7 @@ import linkedin from '../assets/linkedin.png';
 import {useNavigation} from "@react-navigation/native";
 import {ScrollView} from "react-native-gesture-handler";
 
-export function SignUpScreen({navigation: { navigate }}) {
+export function signUpScreen({navigation: { navigate }}) {
   // State variables
   const navigation = useNavigation();
   const [userName, setUserName] = useState('');
@@ -283,4 +283,4 @@ const styles = StyleSheet.create({
   }
 });
 
-export default SignUpScreen;
+export default signUpScreen;

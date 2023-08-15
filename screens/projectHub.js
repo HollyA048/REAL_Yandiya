@@ -3,7 +3,7 @@ import { View, Text, TouchableOpacity, SafeAreaView } from 'react-native';
 import Swiper from 'react-native-swiper';
 import Header from '../components/Header'
 
-export function ProjectHub(){
+export function projectHub(){
   return (
     
     <Swiper showsButtons={true} showsPagination={false} >

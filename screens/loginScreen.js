@@ -17,7 +17,7 @@ import { ScrollView } from 'react-native-gesture-handler';
 
 const icon = { uri: 'https://i.imgur.com/5QVr3RA.png' };
 
-export function LoginScreen({navigation: {navigate}}) {
+export function loginScreen({navigation: {navigate}}) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [status, setStatus] = useState('')
