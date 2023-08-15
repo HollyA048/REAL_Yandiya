@@ -17,7 +17,6 @@ import facebook from '../assets/facebook.png';
 import google from '../assets/google.png';
 import linkedin from '../assets/linkedin.png';
 import {useNavigation} from "@react-navigation/native";
-import {ScrollView} from "react-native-gesture-handler";
 
 export function signUpScreen({navigation: { navigate }}) {
   // State variables
@@ -96,7 +95,7 @@ export function signUpScreen({navigation: { navigate }}) {
             }
           }
           else {
-            navigation.navigate("Home");
+            navigation.navigate("First");
           }
         })
         .catch(error => {
@@ -156,7 +155,7 @@ export function signUpScreen({navigation: { navigate }}) {
             shadowOpacity: 1,
           }}
         >
-        <ScrollView style={{ flexDirection: 'column' }} horizontal={false}>
+        <View>
           <Text
             style={{
               fontSize: 20,
@@ -233,7 +232,7 @@ export function signUpScreen({navigation: { navigate }}) {
               }}
             />
           </TouchableOpacity>
-          </ScrollView>
+          </View>
         </View>
 
       {/* Login link */}
