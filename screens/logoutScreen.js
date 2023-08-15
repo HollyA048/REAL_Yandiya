@@ -9,7 +9,7 @@ import {
   TextInput,
   TouchableOpacity,
 } from 'react-native';
-
+import {useNavigation} from "@react-navigation/native";
 import Constants from 'expo-constants';
 
 import { LinearGradient } from 'expo-linear-gradient';
@@ -22,7 +22,21 @@ const icon = { uri: 'https://i.imgur.com/5QVr3RA.png' };
 
 //Menu function
 
-export function logOut({ navigation: { navigate } }) {
+export function logOut({navigation: {navigate}}) {
+    const handleSignOut = () => {
+        fetch('http://188.39.66.240:9080/sign_out.php')
+            .then(response => {
+                if (response.status === 200) {
+                    navigate('First');
+                } else {
+                    // Handle other response codes or errors
+                    console.error('Sign-out request failed' + response.status);
+                }
+            })
+            .catch(error => {
+                console.error('Error occurred during sign-out:', error);
+            });
+    };
   return (
     //Setting the background colour and flex 1 to ensure that it covers the entire screen
     <View style={{ height: '100%' }}>
@@ -86,7 +100,7 @@ export function logOut({ navigation: { navigate } }) {
 
           {/* Yes button */}
           <TouchableOpacity
-            onPress={( ) => navigate("First")}
+            onPress={( ) => handleSignOut()}
             style={{
               height: 40,
               elevation: 2,
