@@ -80,30 +80,6 @@ export function settingsScreen({ navigation: { navigate } }) {
           <View style={{ position: 'absolute', top: 0, right: 90 }}></View>
         </View>
       </View>
-      <TouchableOpacity
-        onPress={() => navigate('main')}
-        style={{
-          position: 'absolute',
-          top: 30,
-          left: 0,
-          backgroundColor: 'white',
-          width: 75,
-          height: 50,
-          borderBottomRightRadius: 20,
-          borderTopRightRadius: 20,
-          justifyContent: 'center',
-        }}>
-        <Text
-          style={{
-            color: 'black',
-            fontSize: 22,
-            position: 'absolute',
-            left: 12,
-            top: 10,
-          }}>
-          Back
-        </Text>
-      </TouchableOpacity>
     </View>
   );
 }
