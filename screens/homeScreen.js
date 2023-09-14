@@ -91,7 +91,10 @@ export function homeScreen({ navigation: { navigate } }) {
                             </TouchableOpacity>
                         ) : (
                         commissions.map((commission, index) => (
-                            <TouchableOpacity key={index} style={styles.commissionItem}>
+                            <TouchableOpacity key={index} style={styles.commissionItem} onPress={() =>
+                                navigate('inspectionScreen', {
+                                    commission_id: commission.id // passing the commission id into the inspection screen so that the relevant tasks can be shown
+                                })}>
                                 <Text style={styles.commissionTitle}>{commission.title}</Text>
                                 <View style={styles.miniSeparator} />
                                 <Text style={styles.commissionDescription}>{commission.description}</Text>

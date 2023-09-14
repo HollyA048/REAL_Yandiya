@@ -5,10 +5,10 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createStackNavigator } from '@react-navigation/stack';
 import { homeScreen } from './screens/homeScreen';
 import { infoScreen } from './screens/infoScreen';
-import { inspectionScreen } from './screens/inspectionScreen';
+import { commissioningScreen } from './screens/commissioningScreen';
 import { loginScreen } from './screens/loginScreen';
 import { logOut } from './screens/logoutScreen';
-import { preCommission } from './screens/preComScreen';
+import {preCom, preCommission} from './screens/preComScreen';
 import { projectHub } from './screens/projectHub';
 import { signUpScreen } from './screens/signUpScreen';
 import { settingsScreen } from './screens/settingsScreen';
@@ -120,6 +120,15 @@ function App() {
             ),
           }}
         />
+      <Tab.Screen
+          name="inspectionScreen"
+          component={commissioningScreen}
+          options={{
+              tabBarButton: () => null,
+              headerShown: false,
+              tabBarStyle: { display: 'none' },
+          }}
+      />
         <Tab.Screen
           name="Settings"
           component={settingsScreen}
