@@ -65,7 +65,7 @@ function App() {
             tabBarIcon: ({ focused }) => (
               <View style={{ alignItems: 'center', justifyContent: 'center' }}>
                 <Image
-                  source={require('./assets/icon.png')} // change to the correct icon
+                  source={require('./assets/pdf-file.png')} // change to the correct icon
                   resizeMode="contain"
                   style={{
                     bottom: '40%',
@@ -107,7 +107,7 @@ function App() {
             tabBarIcon: ({ focused }) => (
               <View>
                 <Image
-                  source={require('./assets/icon.png')} // change to the correct icon
+                  source={require('./assets/add.png')}
                   resizeMode="contain"
                   style={{
                     width: 50,
@@ -137,7 +137,7 @@ function App() {
             tabBarIcon: ({ focused }) => (
               <View style={{ alignItems: 'center', justifyContent: 'center' }}>
                 <Image
-                  source={require('./assets/icon.png')} // change to the correct icon
+                  source={require('./assets/settings.png')} // change to the correct icon
                   resizeMode="contain"
                   style={{
                     bottom: '40%',
