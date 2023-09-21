@@ -29,7 +29,7 @@ export function commissionScreen({ navigation: { navigate } }) {
     ]);
   }
 
-  const dummy_data = require('../checklists/std_commissioning.json');
+  const std_checklist = require('../checklists/std_commissioning.json');
   return (
 
     <View style={styles.appContainer}>
@@ -46,14 +46,14 @@ export function commissionScreen({ navigation: { navigate } }) {
             onPress={addGoalHandler}
             disabled={isButtonDisabled} />
         </View>
-          {dummy_data.map((commission) => {
+          {std_checklist.map((task) => {
             return (
                 <View style={styles.boxContainer}>
                   <View style={styles.checkboxContainer}>
                     <Check />
                   </View>
                   <View style={styles.checkBoxDescContainer}>
-                    <Text style={{ bottom: '10%' }}><Text style={{fontWeight: "bold"}}>{commission.id}</Text>:{commission.title}</Text>
+                    <Text style={{ bottom: '10%' }}><Text style={{fontWeight: "bold"}}>{task.id}</Text>:{task.title}</Text>
                   </View>
                 </View>
             );
