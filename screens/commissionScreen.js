@@ -29,33 +29,7 @@ export function commissionScreen({ navigation: { navigate } }) {
     ]);
   }
 
-  const dummy_data = [
-    {
-      id: 0,
-      title: "Laptop",
-      checked: 0
-    },
-    {
-      id: 1,
-      title: "Fuse",
-      checked: 1
-    },
-    {
-      id: 2,
-      title: "Switch",
-      checked: 0
-    },
-    {
-      id: 3,
-      title: "Relay",
-      checked: 1
-    },
-    {
-      id: 4,
-      title: "Arc",
-      checked: 0
-    },
-  ];
+  const dummy_data = require('../checklists/std_commissioning.json');
   return (
 
     <View style={styles.appContainer}>
@@ -79,7 +53,7 @@ export function commissionScreen({ navigation: { navigate } }) {
                     <Check />
                   </View>
                   <View style={styles.checkBoxDescContainer}>
-                    <Text style={{ bottom: '10%' }}>{commission.id}:{commission.title}</Text>
+                    <Text style={{ bottom: '10%' }}><Text style={{fontWeight: "bold"}}>{commission.id}</Text>:{commission.title}</Text>
                   </View>
                 </View>
             );
