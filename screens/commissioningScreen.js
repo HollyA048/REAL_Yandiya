@@ -44,7 +44,7 @@ export function commissioningScreen({ navigation: { navigate } }) {
             <Check onPress={ () => handleCheckboxPress(1)} checked={checkboxes[1]}/>
           </View>
           <View style={styles.checkBoxDescContainer}>
-            <Text>Visually checked all spurs</Text>
+            <Text>Visually checked all spurs are 13 amps</Text>
           </View>
         </View>
         <View style={styles.boxContainer}>
@@ -88,7 +88,7 @@ export function commissioningScreen({ navigation: { navigate } }) {
             <Check onPress={ () => handleCheckboxPress(6)} checked={checkboxes[6]}/>
           </View>
           <View style={styles.checkBoxDescContainer}>
-            <Text>Signed off report and 10-year warranty</Text>
+            <Text>Signed off report and 10-year warranty</Text> {/*This will need to on final screen*/}
           </View>
         </View>
           {isButtonVisible ? (
