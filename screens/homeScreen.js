@@ -40,7 +40,7 @@ const getSession = async () => {
 
 export function homeScreen({ navigation: { navigate } }) {
     const [commissions, setCommissions] = useState([]);
-    const [sessionData, setSessionData] = useState({});
+    const [sessionData, setSessionData] = useState([]);
 
     const fetchSession = async () => {
         const result = await getSession();
