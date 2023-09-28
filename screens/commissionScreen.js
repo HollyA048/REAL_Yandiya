@@ -1,17 +1,21 @@
-import { useState } from 'react';
+import {useEffect, useState} from 'react';
 import {
   StyleSheet,
   Text,
   View,
   Button,
   TextInput,
-  ScrollView,
+  ScrollView, TouchableOpacity,
 } from 'react-native';
+import { useRoute } from '@react-navigation/native';
 
 import TopHeader from '../components/Header';
 import Check from '../components/ComCheckBox';
 
 export function commissionScreen({ navigation: { navigate } }) {
+  const route = useRoute();
+  const commission_id = route.params?.commission_id;
+  const [checklists, setChecklists] = useState([]);
   const [enteredGoalText, setEnteredGoalText] = useState('');
   const [courseGoals, setCourseGoals] = useState([]);
 
@@ -29,11 +33,38 @@ export function commissionScreen({ navigation: { navigate } }) {
     ]);
   }
 
-  const std_checklist = require('../checklists/std_commissioning.json');
+  const getChecklist = async () => {
+    try {
+      console.log(commission_id);
+      const response = await fetch('http://188.39.66.240:9080/get_checklist.php?com_id=' + commission_id.toString());
+      if (!response.ok) {
+        throw new Error('Session Request failed with status code ' + response.status);
+      }
+      const result = await response.json();
+      console.log(result);
+      return result;
+    } catch (error) {
+      console.error(error);
+      return null;
+    }
+  };
+  const fetchChecklist = async () => {
+    try {
+      const result = await getChecklist();
+      setChecklists(result);
+    } catch (error) {
+      console.error("Error fetching checklist!");
+    }
+  };
+  useEffect(() => {
+    fetchChecklist();
+  }, []);
+
   return (
 
     <View style={styles.appContainer}>
       <TopHeader />
+      <Button title={"Refresh"} onPress={() => fetchChecklist }/>
       <ScrollView>
         <View style={styles.inputContainer}>
           <TextInput
@@ -46,18 +77,21 @@ export function commissionScreen({ navigation: { navigate } }) {
             onPress={addGoalHandler}
             disabled={isButtonDisabled} />
         </View>
-          {std_checklist.map((task) => {
-            return (
-                <View style={styles.boxContainer}>
-                  <View style={styles.checkboxContainer}>
-                    <Check />
-                  </View>
-                  <View style={styles.checkBoxDescContainer}>
-                    <Text style={{ bottom: '10%' }}><Text style={{fontWeight: "bold"}}>{task.id}</Text>:{task.title}</Text>
-                  </View>
+        {checklists.length === 0 ? (
+            <View>
+              <Text>No Checklists Found!</Text>
+            </View>
+        ) : (
+        checklists.map((task) => (
+              <View style={styles.boxContainer} key={task.response_id}>
+                <View style={styles.checkboxContainer}>
+                  <Check/>
                 </View>
-            );
-          })}
+                <View style={styles.checkBoxDescContainer}>
+                  <Text style={{bottom: '10%'}}><Text style={{fontWeight: "bold"}}>{task.response_id}</Text>:{task.title}</Text>
+                </View>
+              </View>
+      )))}
       </ScrollView>
     </View>
   );
