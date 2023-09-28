@@ -14,7 +14,7 @@ export function addCommissionScreen({navigation: { navigate } }) {
         formData.append('description', description);
 
         console.log("Sent: ", formData)
-        fetch(`http://188.39.66.240:9080/submit_commission.php`, {
+        fetch(`http://188.39.66.240:9080/new_commission.php`, {
             method: 'POST',
             body: formData,
         })

@@ -10,7 +10,7 @@ import {
 import TopHeader from '../components/Header';
 import Check from '../components/InspectCheckBox';
 
-export function commissioningScreen({ navigation: { navigate } }) {
+export function inspectionScreen({ navigation: { navigate } }) {
   const [isButtonVisible, setIsButtonVisible] = useState(false);
   const [checkboxes, setCheckboxes] = useState([false, false, false, false, false, false, false]);
 

@@ -5,10 +5,10 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createStackNavigator } from '@react-navigation/stack';
 import { homeScreen } from './screens/homeScreen';
 import { infoScreen } from './screens/infoScreen';
-import { commissioningScreen } from './screens/commissioningScreen';
+import { inspectionScreen } from './screens/inspectionScreen';
 import { loginScreen } from './screens/loginScreen';
 import { logOut } from './screens/logoutScreen';
-import {preCom, preCommission} from './screens/preComScreen';
+import { commissionScreen } from './screens/commissionScreen';
 import { projectHub } from './screens/projectHub';
 import { signUpScreen } from './screens/signUpScreen';
 import { settingsScreen } from './screens/settingsScreen';
@@ -23,7 +23,7 @@ function HomeStack() {
     <Stack.Navigator initialRouteName='First'>
       <Stack.Screen
         name="First"
-        component={loginScreen}
+        component={ loginScreen }
         options={({ navigation }) => ({
           headerShown: false,
           tabBarStyle: { display: 'none' },
@@ -122,7 +122,16 @@ function App() {
         />
       <Tab.Screen
           name="inspectionScreen"
-          component={commissioningScreen}
+          component={inspectionScreen}
+          options={{
+              tabBarButton: () => null,
+              headerShown: false,
+              tabBarStyle: { display: 'none' },
+          }}
+      />
+      <Tab.Screen
+          name="commissionScreen"
+          component={commissionScreen}
           options={{
               tabBarButton: () => null,
               headerShown: false,
