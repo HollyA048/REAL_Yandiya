@@ -186,8 +186,8 @@ function App() {
               options={{
                   tabBarButton: () => null,
                   headerShown: false,
-                  tabBarStyle: { display: 'none' },
               }}
+
           />
         <Tab.Screen
           name="Login"
