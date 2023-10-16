@@ -5,12 +5,13 @@ import {
   View,
   Button,
   TextInput,
-  ScrollView, TouchableOpacity,
+  ScrollView, Pressable,
 } from 'react-native';
 import { useRoute } from '@react-navigation/native';
 
 import TopHeader from '../components/Header';
 import Check from '../components/ComCheckBox';
+import {Ionicons} from "@expo/vector-icons";
 
 export function commissionScreen({ navigation: { navigate } }) {
   const route = useRoute();
@@ -56,15 +57,21 @@ export function commissionScreen({ navigation: { navigate } }) {
       console.error("Error fetching checklist!");
     }
   };
+
   useEffect(() => {
     fetchChecklist();
   }, []);
+
+  function updateChecklist(index) {
+    console.log("hi " + index)
+    checklists[index]["checked"] = "1";
+    console.log(checklists);
+  }
 
   return (
 
     <View style={styles.appContainer}>
       <TopHeader />
-      <Button title={"Refresh"} onPress={() => fetchChecklist }/>
       <ScrollView>
         <View style={styles.inputContainer}>
           <TextInput
@@ -72,8 +79,9 @@ export function commissionScreen({ navigation: { navigate } }) {
             placeholder="Custom requirement here:"
             onChangeText={goalInputHandler}
           />
-          <Button 
-            title="Add" 
+          <Button title={"Refresh"} onPress={() => fetchChecklist() }/>
+          <Button
+            title="Add"
             onPress={addGoalHandler}
             disabled={isButtonDisabled} />
         </View>
@@ -82,17 +90,18 @@ export function commissionScreen({ navigation: { navigate } }) {
               <Text>No Checklists Found!</Text>
             </View>
         ) : (
-        checklists.map((task) => (
-              <View style={styles.boxContainer} key={task.response_id}>
+        checklists.map((task, index) => (
+              <View style={styles.boxContainer} key={index}>
                 <View style={styles.checkboxContainer}>
-                  <Check/>
+                  <Check _status={true}/>
                 </View>
                 <View style={styles.checkBoxDescContainer}>
-                  <Text style={{bottom: '10%'}}><Text style={{fontWeight: "bold"}}>{task.response_id}</Text>:{task.title}</Text>
+                  <Text style={{bottom: '10%'}}><Text style={{fontWeight: "bold"}}>{index}</Text>:{task.title} {"+ "} {task.checked}</Text>
                 </View>
               </View>
       )))}
       </ScrollView>
+      <Button title={"Save"}/>
     </View>
   );
 }
@@ -117,9 +126,6 @@ const styles = StyleSheet.create({
   checkboxContainer: {
     left: '5%',
     bottom: '2%',
-    borderWidth: 1,
-    borderColor: 'grey',
-    borderRadius: 10,
   },
   boxContainer: {
     flexDirection: 'row',
@@ -134,7 +140,7 @@ const styles = StyleSheet.create({
   },
   inputContainer: {
     flexDirection: 'row',
-    justifyContent: 'space-between',
+    justifyContent: 'space-around',
     alignItems: 'center',
     left: '0.1%',
     marginBottom: 40,
@@ -143,5 +149,18 @@ const styles = StyleSheet.create({
     width: '25%',
     alignSelf: 'center',
     marginTop: '10%',
+  },
+  checkboxBase: {
+    width: 24,
+    height: 24,
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderRadius: 4,
+    borderWidth: 2,
+    borderColor: 'coral',
+    backgroundColor: 'transparent',
+  },
+  checkboxChecked: {
+    backgroundColor: 'coral',
   }
 });

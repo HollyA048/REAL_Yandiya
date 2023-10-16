@@ -1,11 +1,11 @@
 import * as React from 'react';
 import { Checkbox } from 'react-native-paper';
 
-function Check() {
+function Check({_status}) {
     const [checked, setChecked] = React.useState(false);
     return (
         <Checkbox
-            status={checked ? 'checked' : 'unchecked'}
+            status={_status ? 'checked' : 'unchecked'}
             onPress={() => {
                 setChecked(!checked);
             }}
