@@ -7,16 +7,18 @@ import {
   TextInput,
   ScrollView, Pressable,
 } from 'react-native';
-import { useRoute } from '@react-navigation/native';
+import {useNavigation, useRoute} from '@react-navigation/native';
 
 import TopHeader from '../components/Header';
 import Check from '../components/ComCheckBox';
 import {Ionicons} from "@expo/vector-icons";
 
 export function commissionScreen({ navigation: { navigate } }) {
+  const navigation = useNavigation();
   const route = useRoute();
   const commission_id = route.params?.commission_id;
   const [checklists, setChecklists] = useState([]);
+  const [checkBoxes, setCheckBoxes] = useState([]);
   const [enteredGoalText, setEnteredGoalText] = useState('');
   const [courseGoals, setCourseGoals] = useState([]);
 
@@ -58,15 +60,35 @@ export function commissionScreen({ navigation: { navigate } }) {
     }
   };
 
+  const saveChecklist = async (checklists) => {
+    const formData = new FormData();
+    formData.append("com_id", commission_id.toString());
+    formData.append("checklist_data", JSON.stringify(checklists));
+    fetch(`http://188.39.66.240:9080/update_checklist.php`, {
+      method: 'POST',
+      body: formData,
+    })
+      .then(async response => {
+        if (!response.ok) {
+          throw new Error('Request failed with status code ' + response.status);
+        } else {
+          const result = await response.text();
+          console.log(result);
+          navigation.navigate("Home");
+        }
+      })
+  }
+
   useEffect(() => {
     fetchChecklist();
   }, []);
 
-  function updateChecklist(index) {
-    console.log("hi " + index)
-    checklists[index]["checked"] = "1";
-    console.log(checklists);
-  }
+  const toggleCheckBox = (index) => {
+    const updatedChecklist = [...checklists];
+    updatedChecklist[index].checked = updatedChecklist[index].checked === "1" ? "0" : "1";
+    setChecklists(updatedChecklist);
+    console.log("checklists: " + JSON.stringify(checklists));
+  };
 
   return (
 
@@ -93,7 +115,7 @@ export function commissionScreen({ navigation: { navigate } }) {
         checklists.map((task, index) => (
               <View style={styles.boxContainer} key={index}>
                 <View style={styles.checkboxContainer}>
-                  <Check _status={true}/>
+                  <Check _checked={task.checked !== "0"} _onPress={() => toggleCheckBox(index)}/>
                 </View>
                 <View style={styles.checkBoxDescContainer}>
                   <Text style={{bottom: '10%'}}><Text style={{fontWeight: "bold"}}>{index}</Text>:{task.title} {"+ "} {task.checked}</Text>
@@ -101,7 +123,7 @@ export function commissionScreen({ navigation: { navigate } }) {
               </View>
       )))}
       </ScrollView>
-      <Button title={"Save"}/>
+      <Button title={"Save"} onPress={() => saveChecklist(checklists)}/>
     </View>
   );
 }
