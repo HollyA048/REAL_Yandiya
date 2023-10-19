@@ -1,5 +1,13 @@
-import React, { useState } from 'react';
-import {Text, View, Button, TextInput} from 'react-native';
+import React, {useState} from 'react';
+
+import {
+    View,
+    TextInput,
+    Image,
+    TouchableOpacity,
+    Text,
+    StyleSheet,
+} from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 
 export function AddCommissionScreen({navigation: { navigate } }) {
@@ -18,66 +26,140 @@ export function AddCommissionScreen({navigation: { navigate } }) {
             method: 'POST',
             body: formData,
         })
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error('Request failed with status code ' + response.status);
-                }
-                else {
-                    setStatus("Success!");
-                    navigation.navigate("Home");
-                }
-            })
-            .catch(error => {
-                setStatus(error.message);
-            });
+          .then(response => {
+              if (!response.ok) {
+                  throw new Error('Request failed with status code ' + response.status);
+              }
+              else {
+                  setStatus("Success!");
+                  navigation.navigate("Home");
+              }
+          })
+          .catch(error => {
+              setStatus(error.message);
+          });
     };
 
     return (
-        <View style={{top: "25%"}}>
-            <Button title={'Back'} onPress={() => navigate('Home')}/>
-            <Text style={styles.title2}>Yandiya Technologies LTD Commission Creating Tool.</Text>
-            <View style={styles.entry}>
-                <Text style={styles.title1}>Title:</Text>
-                <View style={styles.separator} />
-                <TextInput
-                    placeholder="Enter Title"
-                    value={title}
-                    onChangeText={text => setTitle(text)}
-                />
-                <Text style={styles.title1}>Description:</Text>
-                <View style={styles.separator} />
-                <TextInput
-                    placeholder="Enter Description"
-                    value={description}
-                    onChangeText={text => setDescription(text)}
-                />
-                <Text>Status: {submitStatus}</Text>
-                <Button title="Submit" onPress={SubmitData}/>
-            </View>
-        </View>
-    )
+      <View style={styles.page}>
+
+          <View style={styles.topBorder}>
+              <Text style={styles.topBorderText}>Add Commissions</Text>
+          </View>
+
+          <View style={styles.commAdd}>
+              <Text style={{ textAlign: 'center' }}>Commission Title:</Text>
+              <TextInput style={styles.inputs} value={title} onChangeText={text => setTitle(text)} multiline={true}></TextInput>
+              <Text style={(styles.inputMargin, { textAlign: 'center' })}>
+                  Description:
+              </Text>
+              <TextInput style={styles.inputs} value={description} onChangeText={text => setDescription(text)} multiline={true}></TextInput>
+              <TouchableOpacity style={styles.submitButton} onPress={SubmitData}><Text>Submit</Text></TouchableOpacity>
+          </View>
+      </View>
+    );
 }
 
-const styles = {
-    title1: {
-        fontSize: 20,
-        fontWeight: 'bold',
-    },
-    title2: {
-        fontSize: 30,
+const styles = StyleSheet.create({
+    commissionButton: {
+        display: 'flex',
+        alignItems: 'center',
+        top: '15%',
         textAlign: 'center',
-        fontWeight: 'bold',
     },
-    entry: {
+    topBorder: {
+        backgroundColor: 'red',
+        width: '100%',
+        height: '10%',
+        position: 'absolute',
+        borderBottomLeftRadius: 15,
+        borderBottomRightRadius: 15,
         display: 'flex',
         justifyContent: 'center',
+        shadowColor: '#000',
+        shadowOffset: {
+            width: 0,
+            height: 2,
+        },
+        shadowOpacity: 0.25,
+        shadowRadius: 3.84,
+
+        elevation: 5,
+    },
+    content: {
+        top: 0,
+        position: 'absolute',
+        height: '90%',
+        width: '100%',
+        backgroundColor: '#f7f7f7',
+    },
+    bottomBorder: {
+        position: 'absolute',
+        bottom: 0,
+        backgroundColor: 'red',
+        width: '100%',
+        height: '10%',
+        flexDirection: 'row',
+    },
+    navButton: {
+        flex: 1,
         alignItems: 'center',
+        justifyContent: 'center',
     },
-    separator: {
-        height: 3,
-        backgroundColor: '#e42c22',
-        width: 200,
-        marginTop: -2,
+    addCommButton: {
+        bottom: 25,
+        height: 70,
+        width: 0,
+        flex: 1,
+        alignItems: 'center',
+        justifyContent: 'center',
+        borderRadius: 50,
+        backgroundColor: '#dd0000',
+    },
+    commImage: {
+        height: '100%',
+        width: '100%',
+    },
+    topBorderText: {
+        color: 'white',
+        textAlign: 'center',
+        fontSize: 20,
+    },
+    commAdd: {
+        height: '40%',
+        width: '75%',
+        backgroundColor: 'white',
         alignSelf: 'center',
+        justifyContent: 'center',
+        borderStyle: 'solid',
+        borderWidth: 2,
+        top: '30%',
+        borderColor: 'black',
+        borderRadius: 30,
     },
-};
+    page: {
+        height: '100%',
+        width: '100%',
+    },
+    inputMargin: {
+        marginTop: 10,
+    },
+    inputs: {
+        width: '90%',
+        marginLeft: '5%',
+        backgroundColor: '#eeeeee',
+        height: '25%',
+        borderRadius: 5,
+        padding: 5,
+    },
+    submitButton: {
+        height: '10%',
+        width: '35%',
+        backgroundColor: 'red',
+        alignSelf: 'center',
+        textAlign: 'center',
+        justifyContent: 'center',
+        marginTop: 25,
+        borderRadius: 5,
+    },
+});
