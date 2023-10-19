@@ -3,6 +3,7 @@ import {Text, View, ScrollView, TouchableOpacity, Button} from 'react-native';
 import { createStackNavigator } from "@react-navigation/stack";
 import { useEffect, useState } from "react";
 
+
 const Stack = createStackNavigator();
 
 const getCommissions = async () => {
@@ -38,7 +39,7 @@ const getSession = async () => {
     }
 };
 
-export function homeScreen({ navigation: { navigate } }) {
+export function HomeScreen({ navigation: { navigate } }) {
     const [commissions, setCommissions] = useState([]);
     const [sessionData, setSessionData] = useState([]);
 

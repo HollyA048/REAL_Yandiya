@@ -4,7 +4,7 @@ import {
   Text
 } from 'react-native';
 
-export function welcomeScreen({ navigation: { navigate } }) {
+export function WelcomeScreen({ navigation: { navigate } }) {
     return (
         <View>
             <Text>Add Commission</Text>

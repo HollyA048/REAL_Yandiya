@@ -4,7 +4,7 @@ import {
   Text
 } from 'react-native';
 
-export function sendOffForm({ navigation: { navigate } }) {
+export function SendOffForm({ navigation: { navigate } }) {
     return (
         <View>
             <Text>Add Commission</Text>

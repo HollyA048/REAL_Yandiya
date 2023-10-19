@@ -1,11 +1,10 @@
 import * as React from 'react';
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { View, Image,  } from 'react-native';
 
 function TopHeader(){
     return(
     <View style={styles.header}>
-        <Text style={styles.headerText}>Commissioning Checklist</Text>
+      <Image source={require("../assets/yandiyaLogo_Wide.png")} style={styles.iconImage}/>
     </View>
     );
 }
@@ -13,29 +12,24 @@ function TopHeader(){
 export default TopHeader;
 
 const styles={
-    header: {
-        width: '100%',
-        height: '20%',
-        backgroundColor: '#e42c22',
-        justifyContent: 'center',
-        borderBottomColor: 'black',
-        marginBottom: 24,
-        borderBottomWidth: 1.5,
-        borderTopColor: 'black',
-        borderTopWidth: 1.5,
-    
-        shadowColor: "#000",
-        shadowOffset: {
-          width: 0,
-          height: 3,
-        },
-        shadowOpacity: 0.29,
-        shadowRadius: 4.65,
-    
-        elevation: 7,
-      },
-      headerText: {
-        fontSize: 40,
-        textAlign: 'center',
-      },
+    header: { 
+      height: '15%',
+      width: '100%',
+      borderBottomLeftRadius: 10,
+      borderBottomRightRadius: 10,
+      display: 'flex',
+      alignItems: 'center',
+      backgroundColor: '#e42c22',
+      elevation: 7,
+    },
+    iconImage: {
+      width: "80%",
+      height: "70%",
+      top: '20%',
+      position: 'absolute',
+    },
+    headerText: {
+      fontSize: 40,
+      textAlign: 'center',
+    },
 }
