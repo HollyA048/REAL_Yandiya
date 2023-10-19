@@ -3,7 +3,7 @@ import { Text, View, Image } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createStackNavigator } from '@react-navigation/stack';
-import { HomeScreen } from './screens/homeScreen';
+import { HomeScreen } from './screens/HomeScreen';
 import { InspectionScreen } from './screens/InspectionScreen';
 import { LoginScreen } from './screens/LoginScreen';
 import { LogOut } from './screens/LogoutScreen';
