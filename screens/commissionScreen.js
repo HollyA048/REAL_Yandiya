@@ -13,8 +13,7 @@ import TopHeader from '../components/Header';
 import Check from '../components/ComCheckBox';
 import {Ionicons} from "@expo/vector-icons";
 
-export function commissionScreen({ navigation: { navigate } }) {
-  const navigation = useNavigation();
+export function CommissionScreen({ navigation: { navigate } }) {
   const route = useRoute();
   const commission_id = route.params?.commission_id;
   const [checklists, setChecklists] = useState([]);

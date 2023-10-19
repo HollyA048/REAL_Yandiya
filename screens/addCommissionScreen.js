@@ -10,7 +10,7 @@ import {
 } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 
-export function addCommissionScreen({navigation: {navigate}}) {
+export function AddCommissionScreen({navigation: { navigate } }) {
     const navigation = useNavigation();
     const [submitStatus, setStatus] = useState('');
     const [title, setTitle] = useState('');

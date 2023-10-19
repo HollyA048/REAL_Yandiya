@@ -5,24 +5,17 @@ import {
   View,
   StyleSheet,
   ImageBackground,
-  ScrollView,
-  TextInput,
   TouchableOpacity,
 } from 'react-native';
-import {useNavigation} from "@react-navigation/native";
-import Constants from 'expo-constants';
 
 import { LinearGradient } from 'expo-linear-gradient';
-import { NavigationContainer } from '@react-navigation/native';
-import { createStackNavigator } from '@react-navigation/stack';
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
 const image = { uri: 'https://i.imgur.com/A8WIsR2.png' };
 const icon = { uri: 'https://i.imgur.com/5QVr3RA.png' };
 
 //Menu function
 
-export function logOut({navigation: {navigate}}) {
+export function LogOut({navigation: {navigate}}) {
     const handleSignOut = () => {
         fetch('http://188.39.66.240:9080/sign_out.php')
             .then(response => {

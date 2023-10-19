@@ -3,7 +3,7 @@ import { View, Text, TouchableOpacity, SafeAreaView } from 'react-native';
 import Swiper from 'react-native-swiper';
 import Header from '../components/Header'
 
-export function projectHub(){
+export function ProjectHub(){
   return (
     
     <Swiper showsButtons={true} showsPagination={false} >
@@ -209,26 +209,6 @@ const styles = {
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-  },
-  plsWork: {
-    width: '100%',
-    height: '20%',
-    backgroundColor: '#e42c22',
-    justifyContent: 'center',
-    borderBottomColor: 'black',
-    borderBottomWidth: 1.5,
-    borderTopColor: 'black',
-    borderTopWidth: 1.5,
-
-    shadowColor: "#000",
-    shadowOffset: {
-      width: 0,
-      height: 3,
-    },
-    shadowOpacity: 0.29,
-    shadowRadius: 4.65,
-
-    elevation: 7,
   },
   headerText: {
     fontSize: 40,

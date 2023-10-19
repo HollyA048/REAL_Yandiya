@@ -23,7 +23,7 @@ import bottom from '../assets/bottom.jpg';
 
 //Menu function
 
-export function infoScreen({ navigation: { navigate } }) {
+export function InfoScreen({ navigation: { navigate } }) {
   const [client, setClient] = useState('');
   const [location, setLocation] = useState('');
   const [postCode, setPostCode] = useState('');

@@ -29,7 +29,7 @@ import icon from '../assets/yandiyaLogo_Wide.png';
 import bottom from '../assets/bottom.jpg';
 import side from '../assets/corner.png';
 
-export function settingsScreen({ navigation: { navigate } }) {
+export function SettingsScreen({ navigation: { navigate } }) {
   return (
     <View style={{ flex: 1, height: '100%', backgroundColor: '#f8f7f7' }}>
       <View
