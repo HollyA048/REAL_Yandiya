@@ -12,10 +12,12 @@ import {useNavigation, useRoute} from '@react-navigation/native';
 import TopHeader from '../components/Header';
 import Check from '../components/ComCheckBox';
 import {Ionicons} from "@expo/vector-icons";
+import axios from "axios";
 
-export function CommissionScreen({ navigation: { navigate } }) {
+export function CommissionScreen({ navigation: { navigate }}) {
   const route = useRoute();
   const commission_id = route.params?.commission_id;
+  const navigation = useNavigation();
   const [checklists, setChecklists] = useState([]);
   const [checkBoxes, setCheckBoxes] = useState([]);
   const [enteredGoalText, setEnteredGoalText] = useState('');
@@ -35,47 +37,61 @@ export function CommissionScreen({ navigation: { navigate } }) {
     ]);
   }
 
-  const getChecklist = async () => {
-    try {
-      console.log(commission_id);
-      const response = await fetch('http://188.39.66.240:9080/get_checklist.php?com_id=' + commission_id.toString());
-      if (!response.ok) {
-        throw new Error('Session Request failed with status code ' + response.status);
-      }
-      const result = await response.json();
-      console.log(result);
-      return result;
-    } catch (error) {
-      console.error(error);
-      return null;
-    }
+  const getChecklist = () => {
+    return new Promise((resolve, reject) => {
+      axios({
+        method: 'get',
+        url: 'http://188.39.66.240:9080/get_checklist.php',
+        responseType: 'json',
+        params: {
+          "com_id" : commission_id.toString()
+        },
+        headers: { "Content-Type": "multipart/form-data" }
+      })
+        .then(function (response) {
+          resolve(response);
+        })
+
+        .catch(function (error) {
+          console.log(error);
+          reject(error);
+        })
+    })
   };
-  const fetchChecklist = async () => {
-    try {
-      const result = await getChecklist();
-      setChecklists(result);
-    } catch (error) {
-      console.error("Error fetching checklist!");
-    }
+  const fetchChecklist = () => {
+    getChecklist()
+      .then(function (response) {
+        if (response.data !== null) {
+          setChecklists(response.data.checklists);
+        }
+      })
+      .catch(error => {
+        console.error('Error fetching checklists:', error);
+      })
   };
 
-  const saveChecklist = async (checklists) => {
+  const saveChecklist = (checklists) => {
     const formData = new FormData();
     formData.append("com_id", commission_id.toString());
     formData.append("checklist_data", JSON.stringify(checklists));
-    fetch(`http://188.39.66.240:9080/update_checklist.php`, {
-      method: 'POST',
-      body: formData,
-    })
-      .then(async response => {
-        if (!response.ok) {
-          throw new Error('Request failed with status code ' + response.status);
-        } else {
-          const result = await response.text();
-          console.log(result);
-          navigation.navigate("Home");
-        }
+
+    return new Promise((resolve, reject) => {
+      axios({
+        method: 'post',
+        url: 'http://188.39.66.240:9080/update_checklist.php',
+        responseType: 'json',
+        data: formData,
+        headers: { "Content-Type": "multipart/form-data" }
       })
+        .then(function (response) {
+          resolve(response);
+          navigation.navigate("Home");
+        })
+        .catch(function (error) {
+          console.log(error);
+          reject(error);
+        })
+    })
   }
 
   useEffect(() => {
