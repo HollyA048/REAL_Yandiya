@@ -9,7 +9,6 @@ import {
     StyleSheet,
 } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
-import axios, {formToJSON} from "axios";
 
 export function AddCommissionScreen({navigation: { navigate } }) {
     const navigation = useNavigation();
