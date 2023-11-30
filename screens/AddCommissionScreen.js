@@ -9,6 +9,7 @@ import {
     StyleSheet,
 } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
+import axios, {formToJSON} from "axios";
 
 export function AddCommissionScreen({navigation: { navigate } }) {
     const navigation = useNavigation();
@@ -22,22 +23,23 @@ export function AddCommissionScreen({navigation: { navigate } }) {
         formData.append('description', description);
 
         console.log("Sent: ", formData)
-        fetch(`http://188.39.66.240:9080/new_commission.php`, {
-            method: 'POST',
-            body: formData,
-        })
-          .then(response => {
-              if (!response.ok) {
-                  throw new Error('Request failed with status code ' + response.status);
-              }
-              else {
-                  setStatus("Success!");
+        return new Promise((resolve, reject) => {
+            axios({
+                method: 'post',
+                url: 'http://188.39.66.240:9080/new_commission.php',
+                responseType: 'json',
+                data: formData,
+                headers: { "Content-Type": "multipart/form-data" }
+            })
+              .then(function (response) {
+                  resolve(response);
                   navigation.navigate("Home");
-              }
-          })
-          .catch(error => {
-              setStatus(error.message);
-          });
+              })
+              .catch(function (error) {
+                  console.log(error);
+                  reject(error);
+              })
+        })
     };
 
     return (
