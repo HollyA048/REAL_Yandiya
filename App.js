@@ -12,10 +12,9 @@ import { SettingsScreen } from './screens/SettingsScreen';
 import { AddCommissionScreen } from './screens/AddCommissionScreen';
 import { SignOff } from './screens/SignOffScreen';
 import { JobInfoBox } from './screens/JobIntelScreen';
-import { HelpScreen } from './screens/HelpScreen'
-import { welcomeScreen } from './screens/WelcomeScreen';
-import { HomeScreen } from "./screens/HomeScreen";
-
+import { HelpScreen } from './screens/HelpScreen';
+import { WelcomeScreen } from './screens/WelcomeScreen';
+import { HomeScreen } from './screens/homeScreen';
 const Tab = createBottomTabNavigator();
 
 
@@ -34,7 +33,7 @@ function App() {
         }}>
         <Tab.Screen
           name="Welcome"
-          component={welcomeScreen}
+          component={WelcomeScreen}
           options={{
             tabBarButton: () => null,
             headerShown: false,
