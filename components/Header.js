@@ -21,12 +21,12 @@ const styles={
       alignItems: 'center',
       backgroundColor: '#e42c22',
       elevation: 7,
-      padding: 10,
+      padding: 25,
     },
     iconImage: {
       width: "80%",
       height: "100%",
-      top: '13.75%',
+      top: '30.75%',
       position: 'absolute',
     }
 }
