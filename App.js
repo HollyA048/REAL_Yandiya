@@ -2,8 +2,6 @@ import React from 'react';
 import { Text, View, Image } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { createStackNavigator } from '@react-navigation/stack';
-import { HomeScreen } from './screens/HomeScreen';
 import { InspectionScreen } from './screens/InspectionScreen';
 import { LoginScreen } from './screens/LoginScreen';
 import { LogOut } from './screens/LogoutScreen';
@@ -12,30 +10,18 @@ import { ProjectHub } from './screens/ProjectHub';
 import { SignUpScreen } from './screens/SignUpScreen';
 import { SettingsScreen } from './screens/SettingsScreen';
 import { AddCommissionScreen } from './screens/AddCommissionScreen';
+import { SignOff } from './screens/SignOffScreen';
+import { JobInfoBox } from './screens/JobIntelScreen';
+import { HelpScreen } from './screens/HelpScreen'
+import { welcomeScreen } from './screens/WelcomeScreen';
 
-const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
 
-function HomeStack() {
-  return (
-    <Stack.Navigator initialRouteName='First'>
-      <Stack.Screen
-        name="First"
-        component={LoginScreen}
-        options={({ navigation }) => ({
-          headerShown: false,
-          tabBarStyle: { display: 'none' },
-        })}
-      />
-    </Stack.Navigator>
-  );
-}
 
 function App() {
   return (
-    <NavigationContainer>
+    <NavigationContainer initialRouteName ="Home">
       <Tab.Navigator
-        initialRouteName="HUB"
         tabBarOptions={{
           showLabel: false,
           style: {
@@ -46,7 +32,16 @@ function App() {
           },
         }}>
         <Tab.Screen
-          name="Initial"
+          name="Welcome"
+          component={welcomeScreen}
+          options={{
+            tabBarButton: () => null,
+            headerShown: false,
+            tabBarStyle: { display: 'none' },
+          }}
+        />
+        <Tab.Screen
+          name="login"
           component={LoginScreen}
           options={{
             tabBarButton: () => null,
@@ -74,7 +69,7 @@ function App() {
                 <Text
                   style={{
                     color: '#000000',
-                    fontFamily: 'Manrope',
+                    fontFamily: 'manrope',
                     fontWeight: '300',
                     fontSize: 10,
                     position: 'absolute',
@@ -83,36 +78,6 @@ function App() {
                   }}>
                   Project Hub
                 </Text>
-              </View>
-            ),
-          }}
-        />
-        <Tab.Screen
-          name="HUB"
-          component={HomeStack}
-          options={{
-            headerShown: false,
-            tabBarStyle: { display: 'none' },
-            tabBarButton: () => null,
-          }}
-        />
-        <Tab.Screen
-          name="Home"
-          component={HomeScreen}
-          options={{
-            headerShown: false,
-            tabBarIcon: ({ focused }) => (
-              <View>
-                <Image
-                  source={require('./assets/add.png')}
-                  resizeMode="contain"
-                  style={{
-                    width: 50,
-                    height: 50,
-                    top: -15,
-                    tintColor: focused ? '#e42c22' : '#e42c22',
-                  }}
-                />
               </View>
             ),
           }}
@@ -155,7 +120,7 @@ function App() {
                 <Text
                   style={{
                     color: '#000000',
-                    fontFamily: 'Manrope',
+                    fontFamily: 'manrope',
                     fontWeight: '300',
                     fontSize: 10,
                     position: 'absolute',
@@ -204,9 +169,35 @@ function App() {
             tabBarStyle: { display: 'none' },
           }}
         />
+        <Tab.Screen
+          name="sign_off"
+          component={SignOff}
+          options={{
+            tabBarButton: () => null,
+            headerShown: false,
+            tabBarStyle: { display: 'none' },
+          }}
+        />
+        <Tab.Screen
+          name="JobIntel"
+          component={JobInfoBox}
+          options={{
+            tabBarButton: () => null,
+            headerShown: false,
+            tabBarStyle: { display: 'none' },
+          }}
+        />
+        <Tab.Screen
+          name="Help"
+          component={HelpScreen}
+          options={{
+            tabBarButton: () => null,
+            headerShown: false,
+            tabBarStyle: { display: 'none' },
+          }}
+        />
       </Tab.Navigator>
     </NavigationContainer>
   );
 }
-
 export default App;
