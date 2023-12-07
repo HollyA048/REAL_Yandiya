@@ -11,30 +11,20 @@ import {useNavigation, useRoute} from '@react-navigation/native';
 
 import TopHeader from '../components/Header';
 import Check from '../components/ComCheckBox';
-import {Ionicons} from "@expo/vector-icons";
 import axios from "axios";
 
-export function CommissionScreen({ navigation: { navigate }}) {
-  const route = useRoute();
-  const commission_id = route.params?.commission_id;
+export function CommissionScreen({ route, navigation: { navigate }}) {
+  let commission_id = route.params?.commission_id;
   const navigation = useNavigation();
   const [checklists, setChecklists] = useState([]);
-  const [checkBoxes, setCheckBoxes] = useState([]);
-  const [enteredGoalText, setEnteredGoalText] = useState('');
-  const [courseGoals, setCourseGoals] = useState([]);
-
   const [isButtonDisabled, setIsButtonDisabled] = useState(true);
 
   function goalInputHandler(enteredText) {
-    setEnteredGoalText(enteredText);
-    setIsButtonDisabled(enteredText === '');
+    throw new Error("Not Implemented");
   }
 
   function addGoalHandler() {
-    setCourseGoals((currentCourseGoals) => [
-      ...currentCourseGoals,
-      { text: enteredGoalText, id: Math.random().toString() },
-    ]);
+    throw new Error("Not Implemented");
   }
 
   const getChecklist = () => {
@@ -70,7 +60,18 @@ export function CommissionScreen({ navigation: { navigate }}) {
       })
   };
 
-  const saveChecklist = (checklists) => {
+  const submitChecklist = (checklists) => {
+    onSubmitChecklist(checklists)
+      .then(function(response) {
+        console.log(response); // debug
+        navigation.navigate("Home");
+      })
+      .catch(error => {
+        console.error("Error Submitting Checklists:", error);
+      })
+  }
+
+  const onSubmitChecklist = (checklists) => {
     const formData = new FormData();
     formData.append("com_id", commission_id.toString());
     formData.append("checklist_data", JSON.stringify(checklists));
@@ -85,7 +86,6 @@ export function CommissionScreen({ navigation: { navigate }}) {
       })
         .then(function (response) {
           resolve(response);
-          navigation.navigate("Home");
         })
         .catch(function (error) {
           console.log(error);
@@ -96,7 +96,7 @@ export function CommissionScreen({ navigation: { navigate }}) {
 
   useEffect(() => {
     fetchChecklist();
-  }, []);
+  }, [route]);
 
   const toggleCheckBox = (index) => {
     const updatedChecklist = [...checklists];
@@ -111,6 +111,7 @@ export function CommissionScreen({ navigation: { navigate }}) {
       <TopHeader />
       <ScrollView>
         <View style={styles.inputContainer}>
+          <Text>{commission_id}</Text>
           <TextInput
             style={styles.textInput}
             placeholder="Custom requirement here:"
@@ -138,7 +139,7 @@ export function CommissionScreen({ navigation: { navigate }}) {
               </View>
       )))}
       </ScrollView>
-      <Button title={"Save"} onPress={() => saveChecklist(checklists)}/>
+      <Button title={"Save"} onPress={() => submitChecklist(checklists)}/>
     </View>
   );
 }
