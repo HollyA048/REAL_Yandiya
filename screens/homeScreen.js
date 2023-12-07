@@ -4,6 +4,7 @@ import {Text, View, ScrollView, TouchableOpacity, Button} from 'react-native';
 import { createStackNavigator } from "@react-navigation/stack";
 import { useEffect, useState } from "react";
 import TopHeader from '../components/Header';
+import { styles } from '../stylesheets/home_css';
 
 const Stack = createStackNavigator();
 
@@ -129,55 +130,3 @@ export function HomeScreen({ navigation: { navigate } }) {
     );
 }
 
-const styles = {
-    userName: {
-        marginTop: '10%',
-        fontSize: 20,
-        fontWeight: 'bold',
-    },
-    commissionsContainer: {
-        alignSelf: 'center',
-        height: '60%',
-        width: '90%',
-        marginHorizontal: 20,
-    },
-    whitespace: {
-        width: '40%',
-        height: '25%',
-        backgroundColor: '#e42c22',
-        marginTop: '5%',
-        borderRadius: 30,
-        justifyContent: 'center',
-        alignItems: 'center',
-        
-    },
-    separator: {
-        height: 2,
-        backgroundColor: '#D6D6D6',
-        width: '70%',
-        alignSelf: 'center',
-    },
-    miniSeparator: {
-        backgroundColor: '#d9d9d9',
-        marginTop: '3%',
-        alignSelf: 'center',
-    },
-    commissionItem: {
-        backgroundColor: 'white',
-        marginBottom: 10,
-        borderRadius: 10,
-        padding: 3,
-        alignItems: 'center',
-        width: '100%',
-        height: 'auto',
-    },
-    commissionTitle: {
-        fontSize: 15,
-        fontWeight: 'bold',
-        textAlign: 'center',
-    },
-    commissionDescription: {
-        fontSize: 15,
-        textAlign: 'center',
-    }
-};

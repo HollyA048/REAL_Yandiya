@@ -8,6 +8,7 @@ import {
   ScrollView, Pressable,
 } from 'react-native';
 import {useNavigation, useRoute} from '@react-navigation/native';
+import { styles } from '../stylesheets/commission_css'
 
 import TopHeader from '../components/Header';
 import Check from '../components/ComCheckBox';
@@ -16,7 +17,7 @@ import axios from "axios";
 export function CommissionScreen({ route, navigation: { navigate }}) {
   let commission_id = route.params?.commission_id;
   const navigation = useNavigation();
-  const [checklists, setChecklists] = useState([]);
+  let [checklists, setChecklists] = useState([]);
   const [isButtonDisabled, setIsButtonDisabled] = useState(true);
 
   function goalInputHandler(enteredText) {
@@ -123,7 +124,7 @@ export function CommissionScreen({ route, navigation: { navigate }}) {
             onPress={addGoalHandler}
             disabled={isButtonDisabled} />
         </View>
-        {checklists.length === 0 ? (
+        {checklists === undefined ? (
             <View>
               <Text>No Checklists Found!</Text>
             </View>
@@ -143,62 +144,3 @@ export function CommissionScreen({ route, navigation: { navigate }}) {
     </View>
   );
 }
-
-const styles = StyleSheet.create({
-  appContainer: {
-    flex: 1,
-  },
-  textInput: {
-    borderWidth: 1,
-    borderColor: '#cccccc',
-    width: '70%',
-    left: '30%',
-    marginRight: 8,
-    padding: 8,
-  },
-  customTitle: {
-    borderWidth: 1,
-    borderColor: '#cccccc',
-    padding: 8,
-  },
-  checkboxContainer: {
-    left: '5%',
-    bottom: '2%',
-  },
-  boxContainer: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    marginBottom: 24,
-    borderBottomWidth: 1,
-    borderBottomColor: '#cccccc',
-  },
-  checkBoxDescContainer: {
-    right: '30%',
-    width: '80%',
-  },
-  inputContainer: {
-    flexDirection: 'row',
-    justifyContent: 'space-around',
-    alignItems: 'center',
-    left: '0.1%',
-    marginBottom: 40,
-  },
-  proceedButton:{
-    width: '25%',
-    alignSelf: 'center',
-    marginTop: '10%',
-  },
-  checkboxBase: {
-    width: 24,
-    height: 24,
-    justifyContent: 'center',
-    alignItems: 'center',
-    borderRadius: 4,
-    borderWidth: 2,
-    borderColor: 'coral',
-    backgroundColor: 'transparent',
-  },
-  checkboxChecked: {
-    backgroundColor: 'coral',
-  }
-});

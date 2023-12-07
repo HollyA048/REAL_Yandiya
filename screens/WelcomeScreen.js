@@ -9,7 +9,7 @@ const styles = './styles.js';
 
 import image from '../assets/yandiyaLogo_Small.png';
 
-export function welcomeScreen({ navigation: { navigate } }) {
+export function WelcomeScreen({ navigation: { navigate } }) {
   return (
     <View style={{ height: '100%' }}>
       <View style={{ backgroundColor: '#f8f7f7', flex: 1 }}>
