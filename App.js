@@ -14,6 +14,7 @@ import { SignOff } from './screens/SignOffScreen';
 import { JobInfoBox } from './screens/JobIntelScreen';
 import { HelpScreen } from './screens/HelpScreen'
 import { welcomeScreen } from './screens/WelcomeScreen';
+import { HomeScreen } from "./screens/HomeScreen";
 
 const Tab = createBottomTabNavigator();
 
@@ -78,6 +79,27 @@ function App() {
                   }}>
                   Project Hub
                 </Text>
+              </View>
+            ),
+          }}
+        />
+        <Tab.Screen
+          name="Home"
+          component={HomeScreen}
+          options={{
+            headerShown: false,
+            tabBarIcon: ({ focused }) => (
+              <View>
+                <Image
+                  source={require('./assets/add.png')}
+                  resizeMode="contain"
+                  style={{
+                    width: 50,
+                    height: 50,
+                    top: -15,
+                    tintColor: focused ? '#e42c22' : '#e42c22',
+                  }}
+                />
               </View>
             ),
           }}
