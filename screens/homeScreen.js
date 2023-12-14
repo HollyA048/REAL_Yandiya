@@ -99,7 +99,7 @@ export function HomeScreen({ navigation: { navigate } }) {
                 <Text style={{ fontSize: 18, marginTop: '5%' }}>New Commission</Text>
                 <View style={styles.separator} />
                 <TouchableOpacity style={styles.whitespace} onPress={() => navigate('AddCommission')}>
-                    <Text style={{ fontSize: 30, color: 'white', fontWeight: '200'}}>+</Text>
+                    <Text style={{ fontSize: 40, color: 'white', fontWeight: 'bold'}}>+</Text>
                 </TouchableOpacity>
             </View>
 
@@ -107,7 +107,7 @@ export function HomeScreen({ navigation: { navigate } }) {
                 <Text style={{ fontSize: 18, marginTop: '2%', textAlign: 'center' }}>Current Commissions</Text>
                 <View style={styles.separator} />
                 <Button title={"Refresh"} onPress={() => fetchCommissions() }/>
-                <ScrollView>
+                <ScrollView style={styles.scroll_box}>
                     {commissions.length === 0 ? (
                         <TouchableOpacity style={styles.whitespace}>
                             <Text>No Commissions Found</Text>
