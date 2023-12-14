@@ -35,7 +35,7 @@ miniSeparator: {
     alignSelf: 'center',
 },
 commissionItem: {
-    width: '80%',
+    width: '100%',
     backgroundColor: 'white',
     marginBottom: 10,
     padding: 10,
@@ -63,5 +63,11 @@ footer: {
     borderTopRightRadius: 20,
     justifyContent: 'center',
 },
+scroll_box:{
+    height: 'auto',
+    paddingBottom: 30,
+    width: '80%',
+    flex: 1,
+}
 })
   

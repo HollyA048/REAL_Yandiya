@@ -57,7 +57,7 @@ export function WelcomeScreen({ navigation: { navigate } }) {
         }}>
           <Button
             color="green"
-            onPress={() => navigate('Sign Up')}
+            onPress={() => navigate('SignUp')}
             title="Sign Up"
             style={{fontWeight: "bold"}}
           />

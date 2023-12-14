@@ -10,8 +10,8 @@ import {
 
 import { LinearGradient } from 'expo-linear-gradient';
 
-const image = { uri: 'https://i.imgur.com/A8WIsR2.png' };
-const icon = { uri: 'https://i.imgur.com/5QVr3RA.png' };
+import icon from '../assets/yandiyaLogo_Small.png';
+
 
 //Menu function
 
@@ -20,7 +20,7 @@ export function LogOut({navigation: {navigate}}) {
         fetch('http://188.39.66.240:9080/sign_out.php')
             .then(response => {
                 if (response.status === 200) {
-                    navigate('First');
+                    navigate('Welcome');
                 } else {
                     // Handle other response codes or errors
                     console.error('Sign-out request failed' + response.status);

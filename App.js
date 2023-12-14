@@ -33,7 +33,7 @@ function App() {
         }}>
         <Tab.Screen
           name="Welcome"
-          component={WelcomeScreen}
+          component={WelcomeScreen}//this is the initial route name
           options={{
             tabBarButton: () => null,
             headerShown: false,

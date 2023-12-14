@@ -11,15 +11,15 @@ import {useNavigation, useRoute} from '@react-navigation/native';
 import { styles } from '../stylesheets/commission_css'
 
 import TopHeader from '../components/Header';
-import Check from '../components/ComCheckBox';
+import Checkbox from '../components/Checkbox';
 import axios from "axios";
 
 export function CommissionScreen({ route, navigation: { navigate }}) {
   let commission_id = route.params?.commission_id;
   const navigation = useNavigation();
-  let [checklists, setChecklists] = useState([]);
+  const [checklistData, setChecklistData] = useState([]);
+  const [checkboxes, setCheckBoxes] = useState([]);
   const [isButtonDisabled, setIsButtonDisabled] = useState(true);
-
   function goalInputHandler(enteredText) {
     throw new Error("Not Implemented");
   }
@@ -53,7 +53,7 @@ export function CommissionScreen({ route, navigation: { navigate }}) {
     getChecklist()
       .then(function (response) {
         if (response.data !== null) {
-          setChecklists(response.data.checklists);
+          createCheckBoxes(response.data.checklists);
         }
       })
       .catch(error => {
@@ -61,14 +61,24 @@ export function CommissionScreen({ route, navigation: { navigate }}) {
       })
   };
 
-  const submitChecklist = (checklists) => {
-    onSubmitChecklist(checklists)
+  const submitChecklist = () => {
+    let checkboxValues = [];
+    debugger;
+    checkboxes.map((checkbox) => (
+      checkboxValues.push([...checkboxValues, checkbox.getChecked()])
+    ))
+
+
+
+
+    onSubmitChecklist()
       .then(function(response) {
         console.log(response); // debug
         navigation.navigate("Home");
       })
       .catch(error => {
         console.error("Error Submitting Checklists:", error);
+        navigation.navigate("Home");
       })
   }
 
@@ -99,12 +109,22 @@ export function CommissionScreen({ route, navigation: { navigate }}) {
     fetchChecklist();
   }, [route]);
 
-  const toggleCheckBox = (index) => {
-    const updatedChecklist = [...checklists];
-    updatedChecklist[index].checked = updatedChecklist[index].checked === "1" ? "0" : "1";
-    setChecklists(updatedChecklist);
-    console.log("checklists: " + JSON.stringify(checklists));
+  const toggleCheckBox = (index, checked) => {
+    const updatedChecklist = [...checklistData];
+    updatedChecklist[index].checked = checked ? "1" : "0";
+    setChecklistData(updatedChecklist);
+    console.log("checklists: " + JSON.stringify(checklistData));
   };
+
+  const createCheckBoxes = (checklistData) => {
+    let newCheckBoxes = checklistData.map((task) => (
+       <Checkbox
+       _checked={task.checked !== 0}
+       text={task.title}
+       />
+    ));
+    setCheckBoxes(newCheckBoxes);
+  }
 
   return (
 
@@ -124,23 +144,22 @@ export function CommissionScreen({ route, navigation: { navigate }}) {
             onPress={addGoalHandler}
             disabled={isButtonDisabled} />
         </View>
-        {checklists === undefined ? (
+        {checklistData === undefined ? (
             <View>
               <Text>No Checklists Found!</Text>
             </View>
         ) : (
-        checklists.map((task, index) => (
-              <View style={styles.boxContainer} key={index}>
-                <View style={styles.checkboxContainer}>
-                  <Check _checked={task.checked !== "0"} _onPress={() => toggleCheckBox(index)}/>
-                </View>
-                <View style={styles.checkBoxDescContainer}>
-                  <Text style={{bottom: '10%'}}><Text style={{fontWeight: "bold"}}>{index}</Text>:{task.title} {"+ "} {task.checked}</Text>
-                </View>
-              </View>
+        checkboxes.map((checkbox, index) => (
+          <View style={styles.boxContainer} key={index}>
+            <View style={styles.checkboxContainer}>
+              {checkbox}
+            </View>
+            <View style={styles.checkBoxDescContainer}>
+            </View>
+          </View>
       )))}
       </ScrollView>
-      <Button title={"Save"} onPress={() => submitChecklist(checklists)}/>
+      <Button title={"Save"} onPress={() => submitChecklist(checklistData)}/>
     </View>
   );
 }

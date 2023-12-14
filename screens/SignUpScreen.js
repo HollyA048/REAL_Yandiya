@@ -37,7 +37,7 @@ export function SignUpScreen({ navigation: { navigate } }) {
 
   // Check if all input fields are filled
   const checkInputsFilled = () => {
-    if (email && password && passwordAgain) {
+    if (userName && email && password && passwordAgain) {
       setIsButtonDisabled(false);
     } else {
       setIsButtonDisabled(true);
@@ -47,7 +47,7 @@ export function SignUpScreen({ navigation: { navigate } }) {
   const signUpWithServer = () => {
     const formData = new FormData();
     formData.append('email', email);
-    formData.append('user_name', email); // change this later on to an actual username
+    formData.append('user_name', userName);
     fetch(`http://188.39.66.240:9080/sign_up.php`, {
       method: 'POST',
       body: formData,
@@ -67,7 +67,7 @@ export function SignUpScreen({ navigation: { navigate } }) {
           }
         }
         else {
-          navigation.navigate("First");
+          navigation.navigate("Home");
         }
       })
       .catch(error => {
@@ -84,7 +84,12 @@ export function SignUpScreen({ navigation: { navigate } }) {
       <View style={styles.formContainer}>
         <View style={{ flexDirection: 'column' }} horizontal={false}>
           <Text style={styles.formText}>Sign Up</Text>
-
+          
+          <TextInput
+            style={styles.inputText}
+            placeholder="Input Name"
+            onChangeText={handleUserNameChange}
+          />
           <TextInput
             style={styles.inputText}
             placeholder="Input Email"
