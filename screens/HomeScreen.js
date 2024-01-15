@@ -148,6 +148,7 @@ export function HomeScreen({ navigation: { navigate } }) {
                                     <Text style={styles.commissionTitle}>{commission.title}</Text>
                                     <View style={styles.miniSeparator} />
                                     <Text style={styles.commissionDescription}>{commission.description}</Text>
+                                    <Text style={styles.commissionDescription}>{commission.timestamp !== null ? new Date(commission.timestamp * 1000).toUTCString() : "No Date Recorded!"}</Text>
                                 </TouchableOpacity>
                             ))
                         )}
