@@ -8,7 +8,7 @@ import {
   ScrollView, Pressable,
 } from 'react-native';
 import {useNavigation, useRoute} from '@react-navigation/native';
-import { styles } from '../stylesheets/commission_css'
+import { styles } from '../stylesheets/Commission'
 
 import TopHeader from '../components/Header';
 import Check from '../components/ComCheckBox';

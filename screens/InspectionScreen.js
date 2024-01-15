@@ -6,7 +6,7 @@ import {
   TouchableOpacity,
   ScrollView,
 } from 'react-native';
-import { styles } from '../stylesheets/inspection_css';
+import { styles } from '../stylesheets/Inspection';
 import TopHeader from '../components/Header';
 import Check from '../components/InspectCheckBox';
 
