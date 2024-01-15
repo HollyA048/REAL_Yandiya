@@ -5,7 +5,7 @@ import {
   View,
   Button,
   TextInput,
-  ScrollView, Pressable,
+  ScrollView, Pressable, Touchable, TouchableOpacity,
 } from 'react-native';
 import {useNavigation, useRoute} from '@react-navigation/native';
 import { styles } from '../stylesheets/commission_css'
@@ -54,6 +54,7 @@ export function CommissionScreen({ route, navigation: { navigate }}) {
       .then(function (response) {
         if (response.data !== null) {
           createCheckBoxes(response.data.checklists);
+          setChecklistData(response.data.checklists);
         }
       })
       .catch(error => {
@@ -62,14 +63,15 @@ export function CommissionScreen({ route, navigation: { navigate }}) {
   };
 
   const submitChecklist = () => {
+    checklistData.forEach((value) => {
+      console.log(value);
+    });
+    console.log("done");
+    /*
     let checkboxValues = [];
-    debugger;
     checkboxes.map((checkbox) => (
       checkboxValues.push([...checkboxValues, checkbox.getChecked()])
     ))
-
-
-
 
     onSubmitChecklist()
       .then(function(response) {
@@ -79,7 +81,7 @@ export function CommissionScreen({ route, navigation: { navigate }}) {
       .catch(error => {
         console.error("Error Submitting Checklists:", error);
         navigation.navigate("Home");
-      })
+      })*/
   }
 
   const onSubmitChecklist = (checklists) => {
@@ -117,13 +119,24 @@ export function CommissionScreen({ route, navigation: { navigate }}) {
   };
 
   const createCheckBoxes = (checklistData) => {
-    let newCheckBoxes = checklistData.map((task) => (
+    let newCheckBoxes = checklistData.map((task, index) => (
        <Checkbox
        _checked={task.checked !== 0}
        text={task.title}
        />
     ));
     setCheckBoxes(newCheckBoxes);
+  }
+
+  const handleModifyCheckboxValue = (index) => {
+    console.log("handle modify checkbox value");
+    let temp = checklistData[index]
+    if (checklistData[index].checked === 0) {
+      temp.checked = 1;
+    } else {
+      temp.checked = 0;
+    }
+    checklistData[index] = temp;
   }
 
   return (
@@ -152,7 +165,7 @@ export function CommissionScreen({ route, navigation: { navigate }}) {
         checkboxes.map((checkbox, index) => (
           <View style={styles.boxContainer} key={index}>
             <View style={styles.checkboxContainer}>
-              {checkbox}
+                {checkbox}
             </View>
             <View style={styles.checkBoxDescContainer}>
             </View>

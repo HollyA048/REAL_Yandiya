@@ -10,9 +10,8 @@ class Checkbox extends Component {
     };
   }
 
-  onPress(checkValue) {
+  onPress() {
     this.setState({checked: !this.state.checked});
-    checkValue(this.state.checked); // add function to store value externally here
   }
 
   render() {
