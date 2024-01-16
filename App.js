@@ -7,7 +7,7 @@ import { InspectionScreen } from './screens/InspectionScreen';
 import { LoginScreen } from './screens/LoginScreen';
 import { LogOut } from './screens/LogoutScreen';
 import { CommissionScreen } from './screens/CommissionScreen';
-import { ProjectHub } from './screens/PDFScreen';
+import { PDFPage } from './screens/PDFScreen';
 import { SignUpScreen } from './screens/SignUpScreen';
 import { SettingsScreen } from './screens/SettingsScreen';
 import { AddCommissionScreen } from './screens/AddCommissionScreen';
@@ -69,7 +69,7 @@ function App() {
           },
         }}>
         <Tab.Screen name="login" component={LoginScreen} options={HiddenTabScreen} />
-        <Tab.Screen name="ProjectHub" component={ProjectHub} options={{...commonTabOptions, tabBarIcon: ({ focused }) => createTabBarIcon(require('./assets/pdf-file.png'), focused, 'Project Hub')}} />
+        <Tab.Screen name="ProjectHub" component={PDFPage} options={{...commonTabOptions, tabBarIcon: ({ focused }) => createTabBarIcon(require('./assets/pdf-file.png'), focused, 'ProjectHub')}} />
         <Tab.Screen name="Home" component={HomeScreen} options={{...commonTabOptions, tabBarIcon: ({ focused }) => <View><Image source={require('./assets/add.png')} resizeMode="contain" style={{ width: 50, height: 50, top: -15, tintColor: focused ? '#e42c22' : '#202120' }} /></View>}} />
         <Tab.Screen name="InspectionScreen" component={InspectionScreen} options={HiddenTabScreen} />
         <Tab.Screen name="CommissionScreen" component={CommissionScreen} options={HiddenTabScreen} />
