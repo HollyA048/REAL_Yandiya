@@ -1,4 +1,3 @@
-User
 import * as React from 'react';
 import { View, Text, TouchableOpacity, Linking } from 'react-native';
 import Swiper from 'react-native-swiper';
