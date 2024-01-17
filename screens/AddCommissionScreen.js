@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import {Text, View, Button, TextInput} from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import axios from "axios";
-import { styles } from '../stylesheets/addCommission_css';
+import { styles } from '../stylesheets/AddCommission';
 
 export function AddCommissionScreen({navigation: { navigate } }) {
     const navigation = useNavigation();
@@ -59,27 +59,3 @@ export function AddCommissionScreen({navigation: { navigate } }) {
         </View>
     )
 }
-
-const styles = {
-    title1: {
-        fontSize: 20,
-        fontWeight: 'bold',
-    },
-    title2: {
-        fontSize: 30,
-        textAlign: 'center',
-        fontWeight: 'bold',
-    },
-    entry: {
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-    },
-    separator: {
-        height: 3,
-        backgroundColor: '#e42c22',
-        width: 200,
-        marginTop: -2,
-        alignSelf: 'center',
-    },
-};

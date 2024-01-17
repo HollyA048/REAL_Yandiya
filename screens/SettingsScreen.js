@@ -63,7 +63,7 @@ export function SettingsScreen({ navigation: { navigate } }) {
   );
 }
 
-{/*Styling for picture (small one) if we wanna use it*/}
+/*Styling for picture (small one) if we wanna use it*/
 const style = StyleSheet.create({
   initalScreenImage: {
     width: 300,
@@ -71,7 +71,7 @@ const style = StyleSheet.create({
     display: 'flex',
     alignSelf: 'center',
   },
-  {/*Styling for picture*/}
+  /*Styling for picture*/
   iconStyle: {
     width: 400,
     height: 100,
