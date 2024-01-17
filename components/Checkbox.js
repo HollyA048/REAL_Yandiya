@@ -1,12 +1,16 @@
 import React, { Component } from 'react';
-import { Text, View, StyleSheet } from 'react-native';
+import { Text, View, StyleSheet, PixelRatio } from 'react-native';
+
+// makes the text responsive
+const fontScale = PixelRatio.getFontScale();
+const getFontSize = size => size / fontScale;
 
 class Checkbox extends Component {
     render() {
         return (
             <View style={styles.container}>
                 <Text style={styles.check_icon}>{this.props._checked ? '✅' : '❌'}</Text>
-                <Text style={{paddingLeft: 9}}>
+                <Text style={styles.text}>
                     {this.props.text}
                 </Text>
             </View>
@@ -23,7 +27,12 @@ const styles = StyleSheet.create({
         backgroundColor: 'lightgrey',
     },
     check_icon: {
-        fontSize: 40
+        fontSize: getFontSize(40),
+    },
+    text: {
+        fontSize: getFontSize(20),
+        paddingLeft: 9,
+        paddingRight: 5
     }
 });
 
