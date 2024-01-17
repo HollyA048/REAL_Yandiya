@@ -1,30 +1,51 @@
 {
   "expo": {
-    "name": "template",
-    "slug": "template",
+    "name": "Yandiya Commissions",
+
+    "slug": "Yandiya Commissions",
+
     "version": "1.0.0",
-    "orientation": "default",
-    "icon": "./assets/icon.png",
-    "userInterfaceStyle": "light",
+
+    "orientation": "portrait",
+
+    "icon": "./assets/yandiyaLogo_Small.png",
+
+    "userInterfaceStyle": "dark",
     "splash": {
-      "image": "./assets/splash.png",
+      "image": "./assets/yandiyaLogo_Small.png",
       "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
+      "backgroundColor": "#000000"
     },
+    
+
     "assetBundlePatterns": [
       "**/*"
     ],
+
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+
+      "bundleIdentifier": "Yandiya Commissions"
     },
+
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/adaptive-icon.png",
-        "backgroundColor": "#ffffff"
-      }
+        "foregroundImage": "./assets/yandiyaLogo_Small.png",
+
+        "backgroundColor": "#f8f7f7"
+      },
+
+      "package": "Yandiya.template"
     },
+
     "web": {
-      "favicon": "./assets/favicon.png"
+      "favicon": "./assets/yandiyaLogo_Small.png"
+    },
+
+    "extra": {
+      "eas": {
+        "projectId": "60f802db-d493-4a54-bd8c-ee71ae97e752"
+      }
     }
   }
 }
