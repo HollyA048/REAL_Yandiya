@@ -1,33 +1,9 @@
-import React, { useEffect, useState, useRef } from 'react';
-import {
-  View,
-  Text,
-  StyleSheet,
-  Button,
-  ScrollView,
-  SafeAreaView,
-  StatusBar,
-  Image,
-  TextInput,
-  setInput,
-  Pressable,
-  ImageBackground,
-  AppRegistry,
-  Platform,
-  input,
-  container,
-  Dimensions,
-  Switch,
-  TouchableOpacity,
-} from 'react-native';
+import React from 'react';
+import {Button, Dimensions, ImageBackground, StyleSheet, View,} from 'react-native';
+import icon from '../assets/yandiyaLogo_Wide.png';
 
 const window = Dimensions.get('window');
 const styles = './styles.js';
-
-import image from '../assets/yandiyaLogo_Small.png';
-import icon from '../assets/yandiyaLogo_Wide.png';
-import bottom from '../assets/bottom.jpg';
-import side from '../assets/corner.png';
 
 export function SettingsScreen({ navigation: { navigate } }) {
   return (

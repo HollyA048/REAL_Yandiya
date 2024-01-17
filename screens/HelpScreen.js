@@ -1,23 +1,14 @@
 import * as React from 'react';
-import {
-  Text,
-  View,
-  StyleSheet,
-  ImageBackground,
-  TouchableOpacity,
-  Linking,
-  Platform,
-} from 'react-native';
+import {ImageBackground, Linking, Platform, StyleSheet, Text, TouchableOpacity, View,} from 'react-native';
 
 //facebook, linkedin, googleT
-
 // or any pure javascript modules available in npm
+import side from '../assets/add.png'; // Temp picture
 
-import side from '../assets/corner.png';
 const image = { uri: 'https://i.imgur.com/A8WIsR2.png' };
 
 export function HelpScreen({ navigation: { navigate } }) {
-  dialCall = () => {
+  const dialCall = () => {
     let phoneNumber = '';
 
     if (Platform.OS === 'android') {
