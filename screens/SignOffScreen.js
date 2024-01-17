@@ -1,6 +1,6 @@
 import {Text, View, TouchableOpacity, Image} from 'react-native';
 import React from 'react';
-import {styles} from '../stylesheets/signoff_css';
+import {styles} from '../stylesheets/Signoff';
 const image = require('../assets/yandiyaLogo_Small.png');
 
 

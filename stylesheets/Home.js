@@ -1,22 +1,32 @@
-import { StyleSheet} from "react-native";
+import { StyleSheet, Dimensions } from "react-native";
+
+const { width, height } = Dimensions.get("window");
 
 export const styles = StyleSheet.create({
-  userName: {
-    marginTop: 10,
-    fontSize: 20,
-    fontWeight: 'bold',
-},
+    userName: {
+        marginTop: height * 0.05, // 5% of the screen height
+        fontSize: width * 0.06, // 6% of the screen width
+        fontWeight: 'bold',
+      },
 commissionsContainer: {
     flexGrow: 1,
     alignItems: 'center',
+    width: '103%',
+},
+ScrollContainer: {
+    flex: 1,
+    width: '90%'
+},
+ScrollItem: {
+    width: '97%',
+    alignItems: 'center',
 },
 whitespace: {
-    width: '60%',
-    height: 100,
-    backgroundColor: 'white',
-    marginTop: 10,
-    marginBottom: 10,
-    borderRadius: 30,
+    position: 'absolute',
+    top: height * 0.105, // 2% of the screen height from the top
+    right: width * 0.02, // 2% of the screen width from the right
+    width: width * 0.15, // 15% of the screen width
+    height: height * 0.15, // 15% of the screen height
     justifyContent: 'center',
     alignItems: 'center',
 },
@@ -28,9 +38,9 @@ separator: {
     alignSelf: 'center',
 },
 miniSeparator: {
-    height: 2,
+    height: 1,
     backgroundColor: '#d9d9d9',
-    width: 50,
+    width: '70%',
     marginTop: 1,
     alignSelf: 'center',
 },
@@ -41,6 +51,10 @@ commissionItem: {
     padding: 10,
     borderRadius: 10,
     alignItems: 'center',
+    shadowColor: 'gray',
+    shadowRadius: 1,
+    shadowOffset: 3,
+    shadowOpacity: 0.2,
 },
 commissionTitle: {
     fontSize: 15,
@@ -53,6 +67,7 @@ commissionDescription: {
 },
 footer: {
     position: 'relative',
+    width: '100%',
     bottom: 0,
     left: 0,
     right: 0,
@@ -63,11 +78,4 @@ footer: {
     borderTopRightRadius: 20,
     justifyContent: 'center',
 },
-scroll_box:{
-    height: 'auto',
-    paddingBottom: 30,
-    width: '80%',
-    flex: 1,
-}
 })
-  

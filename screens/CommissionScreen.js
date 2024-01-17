@@ -1,7 +1,7 @@
 import {useEffect, useState} from 'react';
-import {Button, ScrollView, Text, TextInput, TouchableOpacity, View,} from 'react-native';
-import {useNavigation} from '@react-navigation/native';
-import {styles} from '../stylesheets/commission_css'
+import { StyleSheet, Text, View, Button, TextInput, ScrollView, Pressable } from 'react-native';
+import {useNavigation, useRoute} from '@react-navigation/native';
+import { styles } from '../stylesheets/Commission'
 
 import TopHeader from '../components/Header';
 import Checkbox from '../components/Checkbox';

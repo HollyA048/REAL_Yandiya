@@ -1,6 +1,6 @@
 import React from 'react';
 import { Text, View, ScrollView, TouchableOpacity, Image } from 'react-native';
-import { styles } from '../stylesheets/job_intel_css';
+import { styles } from '../stylesheets/JobIntel';
 import { TextStyle } from '../stylesheets/span';
 import data from '../json_stuff/dashboard.json';
 

@@ -31,66 +31,52 @@ import side from '../assets/corner.png';
 
 export function SettingsScreen({ navigation: { navigate } }) {
   return (
-    <View style={{ flex: 1, height: '100%', backgroundColor: '#f8f7f7' }}>
+    <View style={{ height: '100%', backgroundColor: '#f8f7f7' }}>
       <View
         style={{
-          height: '40%',
-          backgroundColor: '#e42c22',
-          borderBottomRightRadius: 100,
-        }}
-      />
-
-      <ImageBackground source={image} style={style.initalScreenImage} />
-
-      <ImageBackground source={side} style={{ height: 100, width: 100 }} />
-
-      <View
-        style={{
-          height: '60%',
-          backgroundColor: '#f8f7f7',
-          borderTopLeftRadius: 100,
+          height: '100%',
+          width: '100%',
+          backgroundColor: 'white',
+          alignSelf: 'center',
+          justifyContent: 'center',
         }}>
-        <View
-          style={{
-            height: '60%',
-            width: '60%',
-            bottom: '6%',
-            backgroundColor: 'white',
-            alignSelf: 'center',
-            borderTopLeftRadius: 100,
-            borderBottomRightRadius: 100,
-            elevation: 3,
-            justifyContent: 'center',
-          }}>
-          <Button
-            color="#212121"
-            onPress={() => navigate('LogOut')}
-            title="Logout"
-          />
-          <Button
-            color="#212121"
-            onPress={() => navigate('Help')}
-            title="Contact us"
-          />
-          <Button
-            color="#212121"
-            onPress={() => navigate('settingsInfo')}
-            title="About us"
-          />
-          <View style={{ position: 'absolute', top: 0, right: 90 }}></View>
-        </View>
+        {/*Image*/}
+        <ImageBackground source={icon} style={style.iconStyle}/>
+        {/*Buttons in the middle*/}
+        <Button
+          color="#212121"
+          onPress={() => navigate('LogOut')}
+          title="Logout"
+        />
+        <Button
+          color="#212121"
+          onPress={() => navigate('Help')}
+          title="Contact us"
+        />
+        <Button
+          color="#212121"
+          onPress={() => navigate('settingsInfo')}
+          title="About us"
+        />
       </View>
     </View>
   );
 }
 
+{/*Styling for picture (small one) if we wanna use it*/}
 const style = StyleSheet.create({
   initalScreenImage: {
     width: 300,
-    height: 500,
-    flex: 1,
-    position: 'absolute',
-    right: '11%',
-    top: '-5%',
+    height: 200,
+    display: 'flex',
+    alignSelf: 'center',
+  },
+  {/*Styling for picture*/}
+  iconStyle: {
+    width: 400,
+    height: 100,
+    display: 'flex',
+    alignSelf: 'center',
+    padding: 70,
   },
 });

@@ -1,31 +1,32 @@
-import { StyleSheet} from 'react-native';
+import { StyleSheet } from 'react-native';
 
 export const styles = StyleSheet.create({
-  slide: {
-    flex: 1,
-    alignItems: 'center',
-  },
   container: {
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
   },
-  headerText: {
-    fontSize: 40,
-    textAlign: 'center',
+  slide: {
+    flex: 1,
+    alignItems: 'center',
   },
-  pageNumber: {
+  pageNumberTop: {
     marginTop: '10%',
     fontWeight: 'bold',
   },
+  pdfTitle: {
+    textAlign: 'center',
+    paddingTop: '10%',
+    fontSize: 18,
+  },
   middleBox: {
-    top: '5%',
+    top: '20%',
     height: '45%',
     width: '70%',
     borderRadius: 5,
     backgroundColor: '#f8f7f7',
 
-    shadowColor: "#000",
+    shadowColor: '#000',
     shadowOffset: {
       width: 0,
       height: 3,
@@ -35,17 +36,16 @@ export const styles = StyleSheet.create({
 
     elevation: 7,
   },
-  pdfContainer:{
-    alignItems: 'center', 
-    alignSelf: 'center', 
-    justifyContent: 'center', 
-    height: 40, 
-    backgroundColor: 'white', 
-    top: '20%', 
-    borderRadius: 15, 
+  Button: {
+    alignItems: 'center',
+    alignSelf: 'center',
+    justifyContent: 'center',
+    backgroundColor: 'white',
+    borderRadius: 15,
+    height: 40,
     width: 140,
 
-    shadowColor: "#000",
+    shadowColor: '#000',
     shadowOffset: {
       width: 0,
       height: 3,
@@ -55,14 +55,11 @@ export const styles = StyleSheet.create({
 
     elevation: 7,
   },
-  pdfTitle: { 
-    textAlign: 'center', 
-    paddingTop: '10%', 
-    fontSize: 18 
-  },
-  bold: {
-    fontWeight: 'bold',
+  miniSeparator: {
+    height: 1,
+    backgroundColor: '#d9d9d9',
+    width: '70%',
+    marginTop: 1,
+    alignSelf: 'center',
   }
-  
 });
-  
