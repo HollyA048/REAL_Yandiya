@@ -1,5 +1,5 @@
 import {useEffect, useState} from 'react';
-import { StyleSheet, Text, View, Button, TextInput, ScrollView, Pressable } from 'react-native';
+import { Text, View, Button, TextInput, ScrollView, TouchableOpacity } from 'react-native';
 import {useNavigation, useRoute} from '@react-navigation/native';
 import { styles } from '../stylesheets/Commission'
 
