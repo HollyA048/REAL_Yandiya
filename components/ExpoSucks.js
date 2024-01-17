@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { StyleSheet, Text, View} from 'react-native';
 
-import Check from './ComCheckBox';
+import Check from './OLDComCheckBox';
 
 function CustomCom(props) {
   return (
