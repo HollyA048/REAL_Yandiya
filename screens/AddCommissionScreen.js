@@ -1,7 +1,6 @@
 import React, {useState} from 'react';
 import {Text, TextInput, TouchableOpacity, View} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
-import {styles} from '../stylesheets/AddCommission';
 
 export function AddCommissionScreen({navigation: { navigate } }) {
     const navigation = useNavigation();
@@ -64,3 +63,47 @@ export function AddCommissionScreen({navigation: { navigate } }) {
         </View>
     )
 }
+
+const styles = {
+    title1: {
+        marginTop: '20%',
+        fontSize: 25,
+        fontWeight: 'bold',
+    },
+    title2: {
+        fontSize: 30,
+        marginTop: '10%',
+        textAlign: 'center',
+        fontWeight: 'bold',
+    },
+    entry: {
+        padding: '10%',
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
+    separator: {
+        height: 3,
+        backgroundColor: '#e42c22',
+        width: 200,
+        marginTop: -2,
+        alignSelf: 'center',
+    },
+    status: {
+        textAlign: 'center',
+    },
+    input: {
+        fontSize: 20,
+    },
+    bottomButtons: {
+        width: '100%',
+        justifyContent: 'center',
+        flexDirection: 'row',
+        top: '40%',
+    },
+    buttonText: {
+        color: 'blue',
+        fontSize: 25,
+        padding: 20,
+    }
+};
