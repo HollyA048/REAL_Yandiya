@@ -1,9 +1,6 @@
 import React from 'react';
-import {Button, Dimensions, ImageBackground, StyleSheet, View,} from 'react-native';
+import {Button, ImageBackground, StyleSheet, View,} from 'react-native';
 import icon from '../assets/yandiyaLogo_Wide.png';
-
-const window = Dimensions.get('window');
-const styles = './styles.js';
 
 export function SettingsScreen({ navigation: { navigate } }) {
   return (
@@ -20,19 +17,16 @@ export function SettingsScreen({ navigation: { navigate } }) {
         <ImageBackground source={icon} style={style.iconStyle}/>
         {/*Buttons in the middle*/}
         <Button
+          style={{paddinghorizontal: 5}}
           color="#212121"
           onPress={() => navigate('LogOut')}
           title="Logout"
         />
         <Button
           color="#212121"
+          style={{paddinghorizontal: 5}}
           onPress={() => navigate('Help')}
           title="Contact us"
-        />
-        <Button
-          color="#212121"
-          onPress={() => navigate('settingsInfo')}
-          title="About us"
         />
       </View>
     </View>
