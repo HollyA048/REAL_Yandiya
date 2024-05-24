@@ -113,8 +113,12 @@ export function SignUpScreen({ navigation: { navigate } }) {
           {/* Continue button */}
           <Button
             title="Continue"
-            onPress={() => signUpWithServer()}
+            onPress={() => navigate('Login')}
             disabled={isButtonDisabled}
+          />
+            <Button
+            title="Guest view"
+            onPress={() => navigate('Home')}
           />
         </View>
       </View>
