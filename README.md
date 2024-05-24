@@ -51,3 +51,6 @@ The new and updated app for Yandiya
  - "image": "./assets/yandiyaLogo_Small.png" -  determines the loading page image
  - "backgroundColor": "#000000"- background color of loading page
 
+# upgrade to the newest sdk
+
+- In the terminal (- npm install expo@latest)
